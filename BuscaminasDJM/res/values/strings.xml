@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BuscaminasDJM</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	
+	<string name="menu1">Configuraciones</string>
+	<string name="menu2">JUGAR!</string>
+	<string name="menu3">AcercaDe</string>
+	
+	<string name="Nivel_Intermedio">Nivel Intermedio</string>
+	<string name="Nivel_Avanzado">Nivel Avanzado</string>
+	
+	<string name="Janina_Costa">JANINA COSTA</string>
+	<string name="Denisse_Pintado">DENISSE PINTADO</string>
+	<string name="Jonathan_M">JONATHAN MENDIETA</string>
+	
+	
+	
+</resources>
