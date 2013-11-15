@@ -14,7 +14,8 @@
          android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
          android:layout_alignParentTop="true"
-         android:src="@drawable/LOGO" android:contentDescription="@string/TODO"/>
+         android:src="@drawable/logo" 
+         android:contentDescription="todo" />
        
      <LinearLayout
          android:id="@+id/layout2"

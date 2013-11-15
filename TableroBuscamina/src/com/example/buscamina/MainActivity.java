@@ -12,24 +12,20 @@ import android.widget.LinearLayout;
 
 
 public class MainActivity extends Activity {
-	private Cuadrado[][] cuad;
+	private Casilla[][] cuad;
 	private DibujarBoard  board;
+	private Tablero tabla;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		tabla = new Tablero("facil");
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layout2);
 		board = new DibujarBoard (this);		  
 		layout.addView(board);
-		cuad = new Cuadrado[8][8];
-		for (int j = 0; j < 8; j++) {
-			for (int i = 0; i < 8; i++) {
-				cuad[j][i] = new Cuadrado();
-			}
-		}
-		
+		cuad = tabla.getTabla();
 	
 	}
 	
@@ -54,8 +50,8 @@ public class MainActivity extends Activity {
 			Paint pintarlinea = new Paint();
 			pintarlinea.setARGB(255, 255, 255, 255);
 			int filaact = 0;
-			for (int j = 0; j < 8; j++) {
-				for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 9; j++) {
+				for (int i = 0; i < 9; i++) {
 					cuad[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
 					if (cuad[j][i].destapado == false)
 						pintar.setARGB(153, 204, 204, 204);
