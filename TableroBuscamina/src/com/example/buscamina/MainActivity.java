@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -50,25 +51,25 @@ public class MainActivity extends Activity {
 			Paint pintarlinea = new Paint();
 			pintarlinea.setARGB(255, 255, 255, 255);
 			int filaact = 0;
-			for (int j = 0; j < 9; j++) {
-				for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 8; j++) {
+				for (int i = 0; i < 8; i++) {
 					cuad[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
-					if (cuad[j][i].destapado == false)
+					if (cuad[j][i].isWrapped() == true)
 						pintar.setARGB(153, 204, 204, 204);
 					else
 						pintar.setARGB(255, 153, 153, 153);
 					canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
-					canvas.drawLine(i* tamCuad, filaact, i * tamCuad 	+ tamCuad, filaact, pintarlinea);
-					canvas.drawLine(i * tamCuad + tamCuad - 1, filaact, i * tamCuad + tamCuad - 1, filaact + tamCuad, pintarlinea);
+					//canvas.drawLine(i* tamCuad, filaact, i * tamCuad 	+ tamCuad, filaact, pintarlinea);
+					//canvas.drawLine(i * tamCuad + tamCuad - 1, filaact, i * tamCuad + tamCuad - 1, filaact + tamCuad, pintarlinea);
 
 					if (cuad[j][i].contenido >= 1
 							&& cuad[j][i].contenido <= 8
-							&& cuad[j][i].destapado)
+							&& cuad[j][i].isWrapped())
 						canvas.drawText(
 								String.valueOf(cuad[j][i].contenido), i * tamCuad + (tamCuad / 2) - 8, filaact + tamCuad / 2, pintar2);
 
 					if (cuad[j][i].contenido == 80
-							&& cuad[j][i].destapado) {
+							&& cuad[j][i].isWrapped()) {
 						Paint bomba = new Paint();
 						bomba.setARGB(255,255, 0, 0);
 						canvas.drawCircle(i * tamCuad + (tamCuad / 2), filaact + (tamCuad / 2), 8, bomba);
@@ -86,5 +87,9 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	@Override
+	public boolean onTouchEvent(MotionEvent e){
+		System.out.println(e.getX()+","+e.getY());
+		return true;}
 
 }

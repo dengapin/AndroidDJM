@@ -7,12 +7,13 @@ private Casilla[][] tabla;
 private ArrayList <Casilla> bombas;
 private ArrayList <Casilla> vacios;
 private String dificultad;
+private Acciones accion;
 
 public Tablero(String dificultad){
-    this.dificultad = dificultad;
+	this.bombas = new ArrayList<Casilla>();
+    this.vacios = new ArrayList<Casilla>();
+	this.dificultad = dificultad;
     this.tabla = creartablero(dificultad);
-    bombas = new ArrayList<Casilla>();
-    vacios = new ArrayList<Casilla>();
     llenartablerobombas(10);
     llenartableronumeros();
     llenartablerovacios();
@@ -80,15 +81,14 @@ public void llenartablerobombas(int idboton){
 public void llenartableronumeros(){
     int x=0,y=0,contx=0,conty=0;
     Casilla numero;
-    if(this.dificultad.equals("facil")){
         for(Casilla temp: this.bombas){
             x=temp.getX();
             y=temp.getY();
             contx=conty=0;
             for(int i=x-1;contx<3;i++){
-                if(i>=0 && i<9){
+                if(i>=0 && i<this.tabla.length){
                 for(int j=y-1;conty<3;j++){
-                    if(j>=0 && j<9){
+                    if(j>=0 && j<this.tabla[0].length){
                         if(this.tabla[i][j]==null){
                         	numero = new Casilla(i,j,"numero");
                         	numero.setNumvalue(1);
@@ -103,97 +103,16 @@ public void llenartableronumeros(){
                 contx++;
             }
         }
-    }
-    else if(this.dificultad.equals("intermedio")){
-        for(Casilla temp: this.bombas){
-            x=temp.getX();
-            y=temp.getY();
-            contx=conty=0;
-            for(int i=x-1;contx<3;i++){
-                if(i>=0 && i<16){
-                for(int j=y-1;conty<3;j++){
-                    if(j>=0 && j<16){
-                        if(this.tabla[i][j]==null){
-                        	numero = new Casilla(i,j,"numero");
-                        	numero.setNumvalue(1);
-                            this.tabla[i][j]=numero;
-                        }
-                        else if((this.tabla[i][j].getNumvalue())!=9){
-                        	this.tabla[i][j].setNumvalue(this.tabla[i][j].getNumvalue()+1);
-                        }
-                    }
-                    conty++;
-                }conty=0;}
-                contx++;
-            }
-        }
-    }
-    else if(this.dificultad.equals("dificil")){
-        for(Casilla temp: this.bombas){
-            x=temp.getX();
-            y=temp.getY();
-            contx=conty=0;
-            for(int i=x-1;contx<3;i++){
-                if(i>=0 && i<16){
-                for(int j=y-1;conty<3;j++){
-                    if(j>=0 && j<30){
-                        if(this.tabla[i][j]==null){
-                        	numero = new Casilla(i,j,"numero");
-                        	numero.setNumvalue(1);
-                            this.tabla[i][j]=numero;
-                        }
-                        else if((this.tabla[i][j].getNumvalue())!=9){
-                        	this.tabla[i][j].setNumvalue(this.tabla[i][j].getNumvalue()+1);
-                        }
-                    }
-                    conty++;
-                }conty=0;}
-                contx++;
-            }
-        }
-    }
 }
 public void llenartablerovacios(){
 	Casilla vacio;
-	if(this.dificultad.equals("facil")){
-		for(int i=0;i<9;i++){
-			for(int j=0;j<9;j++){
+		for(int i=0;i<this.tabla.length;i++){
+			for(int j=0;j<this.tabla[0].length;j++){
 				if(this.tabla[i][j]==null){
 					vacio = new Casilla(i,j,"vacio");
 					vacio.setNumvalue(0);
 					this.tabla[i][j]=vacio;
-					vacios.add(vacio);
-				}
-			}
-		}
-	}
-	else if(this.dificultad.equals("intermedio")){
-		for(int i=0;i<16;i++){
-			for(int j=0;j<16;j++){
-				if(this.tabla[i][j]==null){
-					vacio = new Casilla(i,j,"vacio");
-					vacio.setNumvalue(0);
-					this.tabla[i][j]=vacio;
-					vacios.add(vacio);
-				}
-			}
-		}
-	}
-	else if(this.dificultad.equals("dificil")){
-		for(int i=0;i<16;i++){
-			for(int j=0;j<30;j++){
-				if(this.tabla[i][j]==null){
-					vacio = new Casilla(i,j,"vacio");
-					vacio.setNumvalue(0);
-					this.tabla[i][j]=vacio;
-					vacios.add(vacio);
-				}
-			}
-		}
-	}
-	else
-		System.out.println("Internal error");
-	
+					vacios.add(vacio);}}}
 }
 
 public ArrayList <Casilla> getBombas(){

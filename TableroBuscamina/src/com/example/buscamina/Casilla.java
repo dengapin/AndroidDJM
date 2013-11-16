@@ -1,9 +1,10 @@
 package com.example.buscamina;
 
-public class Casilla {
+
+public class Casilla{
     private int x,y,ancho,numvalue=0;
     public int contenido=0,posx,posy;
-    public boolean destapado=false;
+    private boolean wrapped=true,flagged;
     private String id;
     
     public Casilla(int x, int y, String id){
@@ -24,7 +25,9 @@ public class Casilla {
         else
             return false;
     }
-    
+    public String getId(){
+    	return this.id;
+    }
     public int getX(){
     	return this.x;
     }
@@ -33,6 +36,18 @@ public class Casilla {
     }
     public int getNumvalue(){
     	return this.numvalue;
+    }
+    public boolean isWrapped(){
+    	return this.wrapped;
+    }
+    public boolean isFlagged(){
+    	return this.flagged;
+    }
+    public void setWrapped(boolean value){
+    	this.wrapped = value;
+    }
+    public void setFlagged(boolean value){
+    	this.flagged = value;
     }
     public void setNumvalue(int newValue){
     	this.numvalue = newValue;
