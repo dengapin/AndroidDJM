@@ -9,13 +9,16 @@ import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnTouchListener {
 	private Casilla[][] cuad;
+	private int [][] posicion;
 	private DibujarBoard  board;
 	private Tablero tabla;
+	private Acciones accion;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +26,16 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		tabla = new Tablero("facil");
+		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
+		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layout2);
-		board = new DibujarBoard (this);		  
-		layout.addView(board);
 		cuad = tabla.getTabla();
-	
+		accion.ActionUnwrap(cuad[1][1]);
+		board = new DibujarBoard (this);
+		board.setOnTouchListener(this);
+		layout.addView(board);
+		
 	}
-	
 	class DibujarBoard extends View {
 
 		public DibujarBoard (Context context) {
@@ -43,7 +49,7 @@ public class MainActivity extends Activity {
 				ancho = board.getWidth();
 			else
 			ancho = board.getHeight();
-			int tamCuad = ancho / 8;
+			int tamCuad = ancho / 9;
 			Paint pintar = new Paint();
 			pintar.setTextSize(20);
 			Paint pintar2 = new Paint();
@@ -51,29 +57,36 @@ public class MainActivity extends Activity {
 			Paint pintarlinea = new Paint();
 			pintarlinea.setARGB(255, 255, 255, 255);
 			int filaact = 0;
-			for (int j = 0; j < 8; j++) {
-				for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 9; j++) {
+				for (int i = 0; i < 9; i++) {
 					cuad[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
-					if (cuad[j][i].isWrapped() == true)
+					if (cuad[j][i].getId().equals("numero") && cuad[j][i].isWrapped())
 						pintar.setARGB(153, 204, 204, 204);
-					else
+					else if(cuad[j][i].getId().equals("numero") && !cuad[j][i].isWrapped())
+						pintar.setARGB(255, 255, 0, 0);
+					if (cuad[j][i].getId().equals("bomba") && cuad[j][i].isWrapped())
 						pintar.setARGB(255, 153, 153, 153);
+					else if(cuad[j][i].getId().equals("bomba") && !cuad[j][i].isWrapped())
+						pintar.setARGB(255, 255, 255, 255);
+					if (cuad[j][i].getId().equals("vacio") && cuad[j][i].isWrapped())
+						pintar.setARGB(200, 0, 153, 0);
+					else if(cuad[j][i].getId().equals("vacio") && !cuad[j][i].isWrapped())
+						pintar.setARGB(0, 0, 0, 0);
 					canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
 					//canvas.drawLine(i* tamCuad, filaact, i * tamCuad 	+ tamCuad, filaact, pintarlinea);
 					//canvas.drawLine(i * tamCuad + tamCuad - 1, filaact, i * tamCuad + tamCuad - 1, filaact + tamCuad, pintarlinea);
-
-					if (cuad[j][i].contenido >= 1
+				    /*if (cuad[j][i].contenido >= 1
 							&& cuad[j][i].contenido <= 8
 							&& cuad[j][i].isWrapped())
 						canvas.drawText(
 								String.valueOf(cuad[j][i].contenido), i * tamCuad + (tamCuad / 2) - 8, filaact + tamCuad / 2, pintar2);
-
+					*//*
 					if (cuad[j][i].contenido == 80
 							&& cuad[j][i].isWrapped()) {
 						Paint bomba = new Paint();
 						bomba.setARGB(255,255, 0, 0);
 						canvas.drawCircle(i * tamCuad + (tamCuad / 2), filaact + (tamCuad / 2), 8, bomba);
-					}
+					}*/
 
 				}
 				filaact = filaact + tamCuad;
@@ -87,9 +100,17 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+
 	@Override
-	public boolean onTouchEvent(MotionEvent e){
-		System.out.println(e.getX()+","+e.getY());
-		return true;}
+	public boolean onTouch(View v, MotionEvent event) {
+		for (int f = 0; f < 8; f++) {
+            for (int c = 0; c < 8; c++) {
+                if (cuad[f][c].dentro((int) event.getX(),
+                        (int) event.getY())) {
+                    cuad[f][c].setWrapped(false);
+                    System.out.println("PRUEBA");}}}
+		return true;
+	}
+	
 
 }

@@ -52,4 +52,7 @@ public class Casilla{
     public void setNumvalue(int newValue){
     	this.numvalue = newValue;
     }
+    public void setId(String id){
+    	this.id = id;
+    }
 }

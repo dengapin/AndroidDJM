@@ -5,16 +5,13 @@ import java.util.Random;
 public class Tablero{
 private Casilla[][] tabla;
 private ArrayList <Casilla> bombas;
-private ArrayList <Casilla> vacios;
 private String dificultad;
-private Acciones accion;
 
 public Tablero(String dificultad){
 	this.bombas = new ArrayList<Casilla>();
-    this.vacios = new ArrayList<Casilla>();
 	this.dificultad = dificultad;
     this.tabla = creartablero(dificultad);
-    llenartablerobombas(10);
+    llenartablerobombas(11);
     llenartableronumeros();
     llenartablerovacios();
 }
@@ -79,15 +76,11 @@ public void llenartablerobombas(int idboton){
 }
 
 public void llenartableronumeros(){
-    int x=0,y=0,contx=0,conty=0;
     Casilla numero;
         for(Casilla temp: this.bombas){
-            x=temp.getX();
-            y=temp.getY();
-            contx=conty=0;
-            for(int i=x-1;contx<3;i++){
+            for(int i=temp.getX()-1;i<=temp.getX()+1;i++){
                 if(i>=0 && i<this.tabla.length){
-                for(int j=y-1;conty<3;j++){
+                for(int j=temp.getY()-1;j<=temp.getY()+1;j++){
                     if(j>=0 && j<this.tabla[0].length){
                         if(this.tabla[i][j]==null){
                         	numero = new Casilla(i,j,"numero");
@@ -98,9 +91,7 @@ public void llenartableronumeros(){
                         	this.tabla[i][j].setNumvalue(this.tabla[i][j].getNumvalue()+1);
                         }
                     }
-                    conty++;
-                }conty=0;}
-                contx++;
+                }}
             }
         }
 }
@@ -111,16 +102,11 @@ public void llenartablerovacios(){
 				if(this.tabla[i][j]==null){
 					vacio = new Casilla(i,j,"vacio");
 					vacio.setNumvalue(0);
-					this.tabla[i][j]=vacio;
-					vacios.add(vacio);}}}
+					this.tabla[i][j]=vacio;}}}
 }
 
 public ArrayList <Casilla> getBombas(){
     return this.bombas;
-}
-
-public ArrayList <Casilla> getVacios(){
-    return this.vacios;
 }
 
 public Casilla[][] getTabla(){
