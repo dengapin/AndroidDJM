@@ -14,11 +14,11 @@ import android.widget.LinearLayout;
 
 
 public class MainActivity extends Activity implements OnTouchListener {
-	private Casilla[][] cuad;
 	private int [][] posicion;
 	private DibujarBoard  board;
 	private Tablero tabla;
 	private Acciones accion;
+	private LinearLayout layout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		tabla = new Tablero("facil");
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		
-		LinearLayout layout = (LinearLayout) findViewById(R.id.layout2);
-		cuad = tabla.getTabla();
-		accion.ActionUnwrap(cuad[1][1]);
+		layout = (LinearLayout) findViewById(R.id.layout2);
 		board = new DibujarBoard (this);
 		board.setOnTouchListener(this);
 		layout.addView(board);
@@ -59,19 +57,18 @@ public class MainActivity extends Activity implements OnTouchListener {
 			int filaact = 0;
 			for (int j = 0; j < 9; j++) {
 				for (int i = 0; i < 9; i++) {
-					cuad[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
-					if (cuad[j][i].getId().equals("numero") && cuad[j][i].isWrapped())
+					tabla.getTabla()[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
+					if (tabla.getTabla()[j][i].isWrapped())
 						pintar.setARGB(153, 204, 204, 204);
-					else if(cuad[j][i].getId().equals("numero") && !cuad[j][i].isWrapped())
-						pintar.setARGB(255, 255, 0, 0);
-					if (cuad[j][i].getId().equals("bomba") && cuad[j][i].isWrapped())
-						pintar.setARGB(255, 153, 153, 153);
-					else if(cuad[j][i].getId().equals("bomba") && !cuad[j][i].isWrapped())
-						pintar.setARGB(255, 255, 255, 255);
-					if (cuad[j][i].getId().equals("vacio") && cuad[j][i].isWrapped())
-						pintar.setARGB(200, 0, 153, 0);
-					else if(cuad[j][i].getId().equals("vacio") && !cuad[j][i].isWrapped())
-						pintar.setARGB(0, 0, 0, 0);
+					else{
+						if(tabla.getTabla()[j][i].getId().equals("vacio"))
+							pintar.setARGB(0, 0, 0, 0);
+						else if(tabla.getTabla()[j][i].getId().equals("numero"))
+							pintar.setARGB(255, 255, 0, 0);
+						else if(tabla.getTabla()[j][i].getId().equals("bomba"))
+							pintar.setARGB(255, 153, 153, 153);
+					}
+					
 					canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
 					//canvas.drawLine(i* tamCuad, filaact, i * tamCuad 	+ tamCuad, filaact, pintarlinea);
 					//canvas.drawLine(i * tamCuad + tamCuad - 1, filaact, i * tamCuad + tamCuad - 1, filaact + tamCuad, pintarlinea);
@@ -103,14 +100,19 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		for (int f = 0; f < 8; f++) {
-            for (int c = 0; c < 8; c++) {
-                if (cuad[f][c].dentro((int) event.getX(),
-                        (int) event.getY())) {
-                    cuad[f][c].setWrapped(false);
-                    System.out.println("PRUEBA");}}}
-		return true;
+		for (int f = 0; f < 9; f++) {
+            for (int c = 0; c < 9; c++) {
+                if (tabla.getTabla()[f][c].dentro((int) event.getX(),(int) event.getY())) {
+                	accion.ActionUnwrap(tabla.getTabla()[f][c]);
+                	pintarTablero();
+		return true;}}
+		}
+		return false;
 	}
-	
-
+	public void pintarTablero(){
+		this.layout.removeView(this.board);
+    	this.board = new DibujarBoard(this);
+    	this.layout.addView(this.board);
+    	this.board.setOnTouchListener(this);
+	}
 }

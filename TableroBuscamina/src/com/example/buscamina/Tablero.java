@@ -2,16 +2,18 @@ package com.example.buscamina;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Tablero{
 private Casilla[][] tabla;
-private ArrayList <Casilla> bombas;
+private ArrayList <Casilla> bombas, vacios;
 private String dificultad;
 
 public Tablero(String dificultad){
 	this.bombas = new ArrayList<Casilla>();
+	this.vacios = new ArrayList<Casilla>();
 	this.dificultad = dificultad;
     this.tabla = creartablero(dificultad);
-    llenartablerobombas(11);
+    llenartablerobombas(22);
     llenartableronumeros();
     llenartablerovacios();
 }
@@ -102,11 +104,15 @@ public void llenartablerovacios(){
 				if(this.tabla[i][j]==null){
 					vacio = new Casilla(i,j,"vacio");
 					vacio.setNumvalue(0);
-					this.tabla[i][j]=vacio;}}}
+					this.tabla[i][j]=vacio;
+					this.vacios.add(vacio);}}}
 }
 
 public ArrayList <Casilla> getBombas(){
     return this.bombas;
+}
+public ArrayList <Casilla> getVacios(){
+    return this.vacios;
 }
 
 public Casilla[][] getTabla(){
