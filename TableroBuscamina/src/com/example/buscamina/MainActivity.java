@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends Activity implements OnTouchListener {
 	private int [][] posicion;
+	private boolean inicio=true;
 	private DibujarBoard  board;
 	private Tablero tabla;
 	private Acciones accion;
@@ -55,8 +56,13 @@ public class MainActivity extends Activity implements OnTouchListener {
 			Paint pintarlinea = new Paint();
 			pintarlinea.setARGB(255, 255, 255, 255);
 			int filaact = 0;
-			for (int j = 0; j < 9; j++) {
-				for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < tabla.getTabla().length; j++) {
+				for (int i = 0; i < tabla.getTabla()[0].length; i++) {
+					if(inicio){
+						pintar.setARGB(153, 204, 204, 204);
+						canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+					}
+					else{
 					tabla.getTabla()[j][i].fijarxy(i * tamCuad, filaact, tamCuad);
 					if (tabla.getTabla()[j][i].isWrapped())
 						pintar.setARGB(153, 204, 204, 204);
@@ -84,7 +90,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 						bomba.setARGB(255,255, 0, 0);
 						canvas.drawCircle(i * tamCuad + (tamCuad / 2), filaact + (tamCuad / 2), 8, bomba);
 					}*/
-
+				}
 				}
 				filaact = filaact + tamCuad;
 			}
@@ -100,12 +106,20 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		for (int f = 0; f < 9; f++) {
-            for (int c = 0; c < 9; c++) {
-                if (tabla.getTabla()[f][c].dentro((int) event.getX(),(int) event.getY())) {
-                	accion.ActionUnwrap(tabla.getTabla()[f][c]);
+		for (int i = 0; i < tabla.getTabla().length; i++) {
+            for (int j = 0; j < tabla.getTabla()[0].length; j++) {
+            	if(inicio){
+            		tabla.llenartablerobombas(i,j);
+            		inicio=false;
+            		pintarTablero();
+            		return true;
+            	}else{
+            	if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())) {
+            		accion.ActionUnwrap(tabla.getTabla()[i][j]);
                 	pintarTablero();
-		return true;}}
+                	return true;
+                }}
+            }
 		}
 		return false;
 	}

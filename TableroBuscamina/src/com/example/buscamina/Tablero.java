@@ -13,9 +13,6 @@ public Tablero(String dificultad){
 	this.vacios = new ArrayList<Casilla>();
 	this.dificultad = dificultad;
     this.tabla = creartablero(dificultad);
-    llenartablerobombas(22);
-    llenartableronumeros();
-    llenartablerovacios();
 }
         
 private Casilla[][] creartablero(String dificultad){
@@ -33,7 +30,7 @@ private Casilla[][] creartablero(String dificultad){
 		System.out.println("Internal Error");
 	return tabla;}
 
-public void llenartablerobombas(int idboton){
+public void llenartablerobombas(int i, int j){
 	int cont=0,x=0,y=0;
 	Random random = new Random();
     Casilla bomba;
@@ -41,7 +38,7 @@ public void llenartablerobombas(int idboton){
 		while(cont<10){
             x=random.nextInt(9);
 			y=random.nextInt(9);
-            	if(idboton!=((x*10)+y) && this.tabla[x][y]==null){
+            	if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
             		bomba = new Casilla(x,y,"bomba");
             		bomba.setNumvalue(9);
                     this.tabla[x][y]=bomba;
@@ -54,7 +51,7 @@ public void llenartablerobombas(int idboton){
             while(cont<40){
 			x=random.nextInt(16);
 			y=random.nextInt(16);
-			if(idboton!=((x*10)+y) && this.tabla[x][y]==null){
+			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
 				bomba = new Casilla(x,y,"bomba");
 				bomba.setNumvalue(9);
                 this.tabla[x][y]=bomba;
@@ -65,7 +62,7 @@ public void llenartablerobombas(int idboton){
             while(cont<99){
 			x=random.nextInt(16);
 			y=random.nextInt(30);
-			if(idboton!=((x*10)+y) && this.tabla[x][y]==null){
+			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
 				bomba = new Casilla(x,y,"bomba");
 				bomba.setNumvalue(9);
                 this.tabla[x][y]=bomba;
@@ -75,9 +72,11 @@ public void llenartablerobombas(int idboton){
         }
         else
             System.out.println("Internal error");
+		llenartableronumeros();
+		llenartablerovacios();
 }
 
-public void llenartableronumeros(){
+private void llenartableronumeros(){
     Casilla numero;
         for(Casilla temp: this.bombas){
             for(int i=temp.getX()-1;i<=temp.getX()+1;i++){
@@ -97,7 +96,7 @@ public void llenartableronumeros(){
             }
         }
 }
-public void llenartablerovacios(){
+private void llenartablerovacios(){
 	Casilla vacio;
 		for(int i=0;i<this.tabla.length;i++){
 			for(int j=0;j<this.tabla[0].length;j++){
