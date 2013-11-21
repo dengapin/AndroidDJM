@@ -1,9 +1,42 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/configuracion"
+        android:showAsAction="never"
+        android:title="@string/menu1">
+     
+        <menu >
+            
+            <item 
+                android:id="@+id/menu1_item0"
+                        android:showAsAction="never"
+                        android:title="@string/Nivel_Basico"/>
+            
+            <item 
+                android:id="@+id/menu1_item1"
+                        android:showAsAction="never"
+                        android:title="@string/Nivel_Intermedio"/>
+            <item 
+                android:id="@+id/menu1_item2"
+                        android:showAsAction="never"
+                        android:title="@string/Nivel_Avanzado"/>
+        </menu>
+        
+      </item>
+      
+      <item
+          
+        android:id="@+id/jugar"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="@string/menu2"/>
+     
+      
+      <item
+        android:id="@+id/AcercaDe"
+        android:showAsAction="never"
+        android:title="@string/menu3">
+                    
+       </item>
 
 </menu>
