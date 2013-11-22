@@ -34,6 +34,15 @@ public class Casilla{
     public int getY(){
     	return this.y;
     }
+    public int getPosX(){
+    	return this.posx;
+    }
+    public int getPosY(){
+    	return this.posy;
+    }
+    public int getAncho(){
+    	return this.ancho;
+    }
     public int getNumvalue(){
     	return this.numvalue;
     }
