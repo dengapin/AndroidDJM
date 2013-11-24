@@ -17,7 +17,7 @@ public class PantallaDeInicio extends Activity {
             //El nuevo Thread exige el metodo run
             public void run(){
                 try{
-                    sleep(6000);
+                    sleep(3000);
                 }catch(InterruptedException e){
                     //Si no puedo ejecutar el sleep muestro el error
                     e.printStackTrace();

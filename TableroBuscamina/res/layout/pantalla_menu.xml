@@ -1,7 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-	    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/cespedfondo"   
+    >
+    
+    <LinearLayout 
+	    
 	    android:orientation="vertical"
-	    android:background="@drawable/ic_launcher" >
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="2"
+	    android:gravity="center"
+    >
+    
+	    <TextView  
+			android:id="@+id/txBienvenida"
+	    	android:layout_width="fill_parent" 
+	    	android:layout_height="wrap_content" 
+	    	android:gravity="center"
+	    	android:text="@string/MENU"
+	    	android:textStyle="bold"
+	    	android:textSize="25sp"
+	    	android:textColor="#000000"
+	    />
+	    
+	    
+    
+    </LinearLayout>
+    
+    <TableLayout 
+	 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+	>
+		
+		<TableRow
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingBottom = "10px"
+		>
+			<LinearLayout 
+			  
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"
+		   	>
+			   	<Button
+			   	    android:id="@+id/botonMenu1"
+		            android:layout_width="116dp"
+			   	    android:layout_height="115dp"
+			   	    android:background="@drawable/setting"  />
+			    
+			    <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:text="@string/CONFIGURACION"
+			  	/>
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+			
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px"
+		   	>
+			   	
+			    
+			    
+			    <Button
+			        android:id="@+id/botonMenu2"
+		            android:layout_width="116dp"
+			   	    android:layout_height="115dp"
+			   	    android:background="@drawable/document" />
+			    
+			    <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:text="@string/ACERCA_DE"
+			  	/>
+		    </LinearLayout>
+		    
+		    
+ 		</TableRow>
+ 		
+ 		<TableRow
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingTop = "20px"
+			android:paddingBottom = "10px"
+		>
+		
+			<LinearLayout 
+			  
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"
+		   	>
+			   			   	
+			   	
+			   	<Button
+			   	    android:id="@+id/botonMenu3"
+		            android:layout_width="116dp"
+			   	    android:layout_height="115dp"
+			   	    android:background="@drawable/instrucciones"  />
+			   	
+			    
+			    <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:text="@string/INSTRUCCIONES"
+			  	/>
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+			    
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px">
+		   	
+			   		<Button
+			   		android:id="@+id/botonMenu4"
+		            android:layout_width="116dp"
+			   	    android:layout_height="115dp"
+			   	    android:background="@drawable/jugar"  />
+			   				    
+			    <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:text="@string/JUGAR"
+			  	/>
+		    </LinearLayout>
+		    
+ 		</TableRow>
+	
+	</TableLayout>
+    
+    
+    <TextView  
+		android:id="@+id/txTexto"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textStyle="bold"
+    	android:textColor="#ffffff"
+    	android:text="@string/bla"
+    />
+    
+    <TextView  
+		android:id="@+id/txTexto2"		
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textColor="#ffffff"    	
+    	android:textStyle="bold"
+    	android:text="@string/ooo"
+    />
+    
 </LinearLayout>

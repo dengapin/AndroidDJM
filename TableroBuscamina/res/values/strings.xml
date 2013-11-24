@@ -18,5 +18,13 @@
         <string name="Janina_Costa">JANINA COSTA</string>
         <string name="Denisse_Pintado">DENISSE PINTADO</string>
         <string name="Jonathan_M">JONATHAN MENDIETA</string>
+        
+        <string name="MENU">MENU!</string>
+    	<string name="CONFIGURACION">CONFIGURACION</string>
+    	<string name="ACERCA_DE">ACERCA DE</string>
+    	<string name="bla"></string>
+    	<string name="ooo"></string>
+    	<string name="JUGAR">JUGAR</string>
+    	<string name="INSTRUCCIONES">INSTRUCCIONES</string>
 
 </resources>
