@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">buscaMina</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="titulo_inicio">BuscaminasDJM!</string>
+    <string name="titulo_menu">Menu Principal!</string>
+    
+    	<string name="menu1">Configuraciones</string>
+        <string name="menu2">JUGAR!</string>
+        <string name="menu3">AcercaDe</string>
+        
+        <string name="Nivel_Basico">Nivel Basico</string>
+        <string name="Nivel_Intermedio">Nivel Intermedio</string>
+        <string name="Nivel_Avanzado">Nivel Avanzado</string>
+        
+        <string name="Janina_Costa">JANINA COSTA</string>
+        <string name="Denisse_Pintado">DENISSE PINTADO</string>
+        <string name="Jonathan_M">JONATHAN MENDIETA</string>
+        
+        <string name="MENU">MENU!</string>
+    	<string name="CONFIGURACION">CONFIGURACION</string>
+    	<string name="ACERCA_DE">ACERCA DE</string>
+    	<string name="bla"></string>
+    	<string name="ooo"></string>
+    	<string name="JUGAR">JUGAR</string>
+    	<string name="INSTRUCCIONES">INSTRUCCIONES</string>
+
+</resources>
