@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity implements OnTouchListener {
@@ -20,11 +21,25 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Tablero tabla;
 	private Acciones accion;
 	private LinearLayout layout;
+	
+	private TextView textView1;
+	private TextView textView2;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		
+		textView1 = (TextView) findViewById(R.id.textView1);
+		textView2 = (TextView) findViewById(R.id.textView2);
+
+		// set font style for timer and mine count to LCD style
+		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
+		    "fonts/lcd2mono.ttf");
+		textView1.setTypeface(lcdFont);
+		textView2.setTypeface(lcdFont);
 		
 		tabla = new Tablero("facil");
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
