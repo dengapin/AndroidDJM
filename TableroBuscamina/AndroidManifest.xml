@@ -46,6 +46,42 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <activity
+            
+            android:name="com.example.buscamina.Creditos"
+            android:label="@string/app_creditos" 
+            android:screenOrientation="sensor">
+            <intent-filter>
+                <action android:name="com.example.gridview.creditos.PRINCIPAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            
+            android:name="com.example.buscamina.Instrucciones"
+            android:label="@string/app_instrucciones" 
+            android:screenOrientation="sensor">
+            <intent-filter>
+                <action android:name="com.example.gridview.instrucciones.PRINCIPAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            
+            android:name="com.example.buscamina.Configuracion"
+            android:label="@string/app_configuracion" 
+            android:screenOrientation="sensor">
+            <intent-filter>
+                <action android:name="com.example.gridview.configuracion.PRINCIPAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         
+        
+          
     </application>
 
 </manifest>

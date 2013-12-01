@@ -7,7 +7,7 @@
     <string name="titulo_inicio">BuscaminasDJM!</string>
     <string name="titulo_menu">Menu Principal!</string>
     
-    	<string name="menu1">Configuraciones</string>
+    	<string name="menu1">Menu Principal</string>
         <string name="menu2">JUGAR!</string>
         <string name="menu3">AcercaDe</string>
         
@@ -27,4 +27,13 @@
     	<string name="JUGAR">JUGAR</string>
     	<string name="INSTRUCCIONES">INSTRUCCIONES</string>
 
+    	
+    	
+    <string name="app_creditos">Creditos</string>
+    <string name="app_configuracion">Configuracion</string>
+    <string name="app_config">Configuraciones</string>
+    <string name="app_instrucciones">Instrucciones</string>
+    
+    
+    	
 </resources>

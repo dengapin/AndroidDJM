@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/cespedfondo"   
+    android:background="@drawable/menu_principal"   
     >
     
     <LinearLayout 
@@ -12,21 +12,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:layout_weight="2"
-	    android:gravity="center"
-    >
-    
-	    <TextView  
-			android:id="@+id/txBienvenida"
-	    	android:layout_width="fill_parent" 
-	    	android:layout_height="wrap_content" 
-	    	android:gravity="center"
-	    	android:text="@string/MENU"
-	    	android:textStyle="bold"
-	    	android:textSize="25sp"
-	    	android:textColor="#000000"
-	    />
-	    
-	    
+	    android:gravity="center">
     
     </LinearLayout>
     
@@ -53,18 +39,19 @@
 			    android:gravity="center"
 			    android:paddingRight="20px"
 		   	>
+
 			   	<Button
 			   	    android:id="@+id/botonMenu1"
-		            android:layout_width="116dp"
-			   	    android:layout_height="115dp"
-			   	    android:background="@drawable/setting"  />
+			   	    android:layout_width="80dp"
+			   	    android:layout_height="80dp"
+			   	    android:background="@drawable/boton_configuraciones" />
 			    
 			    <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#000000"
+				  	android:textColor="#ffffff"
 				  	android:text="@string/CONFIGURACION"
 			  	/>
 		    </LinearLayout>
@@ -79,20 +66,18 @@
 			    android:paddingLeft="20px"
 		   	>
 			   	
-			    
-			    
 			    <Button
 			        android:id="@+id/botonMenu2"
-		            android:layout_width="116dp"
-			   	    android:layout_height="115dp"
-			   	    android:background="@drawable/document" />
+			        android:layout_width="80dp"
+			        android:layout_height="80dp"
+			        android:background="@drawable/boton_acercade" />
 			    
 			    <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#000000"
+				  	android:textColor="#ffffff"
 				  	android:text="@string/ACERCA_DE"
 			  	/>
 		    </LinearLayout>
@@ -119,20 +104,18 @@
 			    android:paddingRight="20px"
 		   	>
 			   			   	
-			   	
 			   	<Button
 			   	    android:id="@+id/botonMenu3"
-		            android:layout_width="116dp"
-			   	    android:layout_height="115dp"
-			   	    android:background="@drawable/instrucciones"  />
-			   	
+			   	    android:layout_width="80dp"
+			   	    android:layout_height="80dp"
+			   	    android:background="@drawable/boton_instrucciones" />
 			    
 			    <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#000000"
+				  	android:textColor="#ffffff"
 				  	android:text="@string/INSTRUCCIONES"
 			  	/>
 		    </LinearLayout>
@@ -147,17 +130,17 @@
 			    android:paddingLeft="20px">
 		   	
 			   		<Button
-			   		android:id="@+id/botonMenu4"
-		            android:layout_width="116dp"
-			   	    android:layout_height="115dp"
-			   	    android:background="@drawable/jugar"  />
+			   		    android:id="@+id/botonMenu4"
+			   		    android:layout_width="80dp"
+			   		    android:layout_height="80dp"
+			   		    android:background="@drawable/boton_jugar" />
 			   				    
 			    <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#000000"
+				  	android:textColor="#ffffff"
 				  	android:text="@string/JUGAR"
 			  	/>
 		    </LinearLayout>
