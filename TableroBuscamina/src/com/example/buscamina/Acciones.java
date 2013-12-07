@@ -7,6 +7,7 @@ import java.util.Queue;
 public class Acciones {
 private Casilla[][] tablero;
 private ArrayList<Casilla> bombas;
+private boolean fin = false;
 
 public Acciones(Casilla[][] tablero, ArrayList<Casilla> bombas){
 	this.tablero = tablero;
@@ -18,15 +19,18 @@ public void ActionUnwrap(Casilla casilla){
 				if(!casilla.isFlagged() && casilla.isWrapped())
 					for(Casilla temp: bombas)
 						temp.setWrapped(false);
+				this.fin = true;
 			break;
 		case 0:
 				if(!casilla.isFlagged() && casilla.isWrapped())
 					casilla.setWrapped(false);
 					ActionUnwrapVacios(casilla);
+				this.fin = false;
 			break;
 		default:
 			if(!casilla.isFlagged() && casilla.isWrapped())
 				casilla.setWrapped(false);
+			this.fin = false;
 		break;
 	}
 }
@@ -51,5 +55,8 @@ private void ActionUnwrapVacios(Casilla casilla){
 			}
 			
 	}
+}
+public boolean testFin(){
+	return this.fin;
 }
 }

@@ -21,48 +21,49 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int boton_acercade=0x7f020000;
-        public static final int boton_configuraciones=0x7f020001;
-        public static final int boton_instrucciones=0x7f020002;
-        public static final int boton_jugar=0x7f020003;
-        public static final int cespedfondo=0x7f020004;
-        public static final int cool=0x7f020005;
-        public static final int document=0x7f020006;
-        public static final int feliz=0x7f020007;
-        public static final int fondo_acerca=0x7f020008;
-        public static final int fondo_instrucciones=0x7f020009;
-        public static final int fondo_principal=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int jugar=0x7f02000c;
-        public static final int logo=0x7f02000d;
-        public static final int logo_buscaminas=0x7f02000e;
-        public static final int menu_principal=0x7f02000f;
-        public static final int sorprendido=0x7f020010;
-        public static final int triste=0x7f020011;
-        public static final int wrap=0x7f020012;
+        public static final int bhome=0x7f020000;
+        public static final int boton_acercade=0x7f020001;
+        public static final int boton_configuraciones=0x7f020002;
+        public static final int boton_instrucciones=0x7f020003;
+        public static final int boton_jugar=0x7f020004;
+        public static final int breiniciar=0x7f020005;
+        public static final int cespedfondo=0x7f020006;
+        public static final int cool=0x7f020007;
+        public static final int document=0x7f020008;
+        public static final int feliz=0x7f020009;
+        public static final int fondo_acerca=0x7f02000a;
+        public static final int fondo_instrucciones=0x7f02000b;
+        public static final int fondo_principal=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int instrucciones=0x7f02000e;
+        public static final int jugar=0x7f02000f;
+        public static final int logo=0x7f020010;
+        public static final int logo_buscaminas=0x7f020011;
+        public static final int menu_principal=0x7f020012;
+        public static final int setting=0x7f020013;
+        public static final int sorprendido=0x7f020014;
+        public static final int triste=0x7f020015;
+        public static final int wrap=0x7f020016;
     }
     public static final class id {
-        public static final int AcercaDe=0x7f080014;
-        public static final int botonMenu1=0x7f08000c;
-        public static final int botonMenu2=0x7f08000d;
-        public static final int botonMenu3=0x7f08000e;
-        public static final int botonMenu4=0x7f08000f;
-        public static final int idbotonavanzado=0x7f080008;
-        public static final int idbotonfacil=0x7f080006;
-        public static final int idbotonintermedio=0x7f080007;
-        public static final int imageButton1=0x7f080004;
-        public static final int imageView1=0x7f080001;
-        public static final int jugar=0x7f080013;
+        public static final int AcercaDe=0x7f080011;
+        public static final int botonMenu1=0x7f080009;
+        public static final int botonMenu2=0x7f08000a;
+        public static final int botonMenu3=0x7f08000b;
+        public static final int botonMenu4=0x7f08000c;
+        public static final int idbotonavanzado=0x7f080004;
+        public static final int idbotonfacil=0x7f080002;
+        public static final int idbotonintermedio=0x7f080003;
+        public static final int jugar=0x7f080010;
         public static final int layout2=0x7f080000;
-        public static final int op_menu_principal=0x7f080012;
-        public static final int tableRow1=0x7f080002;
-        public static final int textView1=0x7f080003;
+        public static final int op_menu_principal=0x7f08000f;
+        public static final int textView1=0x7f080001;
         public static final int textView2=0x7f080005;
-        public static final int textView3=0x7f080009;
-        public static final int textView4=0x7f08000a;
-        public static final int textView5=0x7f08000b;
-        public static final int txTexto=0x7f080010;
-        public static final int txTexto2=0x7f080011;
+        public static final int textView3=0x7f080006;
+        public static final int textView4=0x7f080007;
+        public static final int textView5=0x7f080008;
+        public static final int txTexto=0x7f08000d;
+        public static final int txTexto2=0x7f08000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -78,7 +79,7 @@ public final class R {
     }
     public static final class string {
         public static final int ACERCA_DE=0x7f050010;
-        public static final int CONFIGURACION=0x7f05000f;
+        public static final int DIFICULTAD=0x7f05000f;
         public static final int Denisse_Pintado=0x7f05000c;
         public static final int INSTRUCCIONES=0x7f050014;
         public static final int JUGAR=0x7f050013;

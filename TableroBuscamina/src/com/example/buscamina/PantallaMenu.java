@@ -49,7 +49,7 @@ public class PantallaMenu extends Activity  {
                 
                 
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acción ha sido MOVER");
+                Log.d(DEBUG_TAG, "La acciï¿½n ha sido MOVER");
             	//Toast.makeText(PantallaMenu.this , "ACERCA DE ", Toast.LENGTH_LONG).show();
             	startActivity(actividaPrincipal1);
             	//setContentView(R.layout.creditos);
@@ -86,7 +86,7 @@ public class PantallaMenu extends Activity  {
                 
                 
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acción ha sido MOVER");
+                Log.d(DEBUG_TAG, "La acciï¿½n ha sido MOVER");
             	startActivity(actividaPrincipal2);
             
                 return true;
@@ -122,7 +122,7 @@ public class PantallaMenu extends Activity  {
                 
                 
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acción ha sido MOVER");
+                Log.d(DEBUG_TAG, "La acciï¿½n ha sido MOVER");
             	startActivity(actividaPrincipal3);
                 return true;
                 
@@ -152,22 +152,6 @@ public class PantallaMenu extends Activity  {
                 Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal);
                 return true;
-                
-                
-            case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acción ha sido MOVER");
-            
-            	startActivity(actividaPrincipal);
-                return true;
-                
-            case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "La acción ha sido ARRIBA");
-            	Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
-            	startActivity(actividaPrincipal);
-            	return true;
-            
-           
-            	
             	
             default:
                 return true;

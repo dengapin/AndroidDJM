@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,33 +7,38 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
-       
-     <LinearLayout
+    tools:context=".MainActivity" > 
+    	<ScrollView 
+    	 android:layout_width="wrap_content"
+    	 android:layout_height="wrap_content">
+    	 <HorizontalScrollView 
+    	 android:layout_width="wrap_content"
+    	 android:layout_height="wrap_content">
+        <LinearLayout
          android:id="@+id/layout2"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
          android:layout_alignParentRight="true"
          android:orientation="vertical" >
-
-     </LinearLayout>
-
-     <ImageView
+    	 </LinearLayout>
+    	 </HorizontalScrollView>
+    	 </ScrollView>
+    	<!--
+    	<ImageView
          android:id="@+id/imageView1"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/layout2"
          android:layout_below="@+id/layout2"
          android:src="@drawable/logo" />
-
-     <TableRow
+	<TableRow
          android:id="@+id/tableRow1"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
-         android:layout_below="@+id/imageView1" >
-
+         android:layout_below="@+id/imageView1" 
+          >
          <TextView
              android:id="@+id/textView1"
              android:layout_width="0dp"
@@ -40,7 +46,7 @@
              android:layout_column="0"
              android:layout_weight="1"
              android:text="000"
-             android:textAppearance="?android:attr/textAppearanceLarge" />
+             android:textAppearance="?android:attr/textAppearanceLarge" /> 
 
          <ImageButton
              android:id="@+id/imageButton1"
@@ -58,5 +64,7 @@
              android:text="000"
              android:textAppearance="?android:attr/textAppearanceLarge" />
      </TableRow>
+     -->
+		
      
 </RelativeLayout>

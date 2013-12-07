@@ -28,6 +28,10 @@ private Casilla[][] creartablero(String dificultad){
 	}
 	else
 		System.out.println("Internal Error");
+	for (int i = 0; i < tabla.length; i++) {
+        for (int j = 0; j < tabla[0].length; j++) {
+        	tabla[i][j]= new Casilla(i,j,"start");
+        }}
 	return tabla;}
 
 public void llenartablerobombas(int i, int j){
@@ -38,7 +42,7 @@ public void llenartablerobombas(int i, int j){
 		while(cont<10){
             x=random.nextInt(9);
 			y=random.nextInt(9);
-            	if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
+            	if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y].getId().equals("start")){
             		bomba = new Casilla(x,y,"bomba");
             		bomba.setNumvalue(9);
                     this.tabla[x][y]=bomba;
@@ -51,7 +55,7 @@ public void llenartablerobombas(int i, int j){
             while(cont<40){
 			x=random.nextInt(16);
 			y=random.nextInt(16);
-			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
+			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y].getId().equals("start")){
 				bomba = new Casilla(x,y,"bomba");
 				bomba.setNumvalue(9);
                 this.tabla[x][y]=bomba;
@@ -62,7 +66,7 @@ public void llenartablerobombas(int i, int j){
             while(cont<99){
 			x=random.nextInt(16);
 			y=random.nextInt(30);
-			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y]==null){
+			if(((i*10)+j)!=((x*10)+y) && this.tabla[x][y].getId().equals("start")){
 				bomba = new Casilla(x,y,"bomba");
 				bomba.setNumvalue(9);
                 this.tabla[x][y]=bomba;
@@ -83,7 +87,7 @@ private void llenartableronumeros(){
                 if(i>=0 && i<this.tabla.length){
                 for(int j=temp.getY()-1;j<=temp.getY()+1;j++){
                     if(j>=0 && j<this.tabla[0].length){
-                        if(this.tabla[i][j]==null){
+                        if(this.tabla[i][j].getId().equals("start")){
                         	numero = new Casilla(i,j,"numero");
                         	numero.setNumvalue(1);
                             this.tabla[i][j]=numero;
@@ -100,7 +104,7 @@ private void llenartablerovacios(){
 	Casilla vacio;
 		for(int i=0;i<this.tabla.length;i++){
 			for(int j=0;j<this.tabla[0].length;j++){
-				if(this.tabla[i][j]==null){
+				if(this.tabla[i][j].getId().equals("start")){
 					vacio = new Casilla(i,j,"vacio");
 					vacio.setNumvalue(0);
 					this.tabla[i][j]=vacio;
