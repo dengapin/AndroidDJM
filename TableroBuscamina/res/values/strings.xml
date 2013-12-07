@@ -34,6 +34,11 @@
     <string name="app_config">Configuraciones</string>
     <string name="app_instrucciones">Instrucciones</string>
     
+    	<string name="facil">Fácil</string>
+        <string name="intermedio">Intermedio</string>
+        <string name="avanzado">Avanzado</string>
+        <string name="dificil">Avanzado</string>
+    
     
     	
 </resources>

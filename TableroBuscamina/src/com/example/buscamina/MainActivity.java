@@ -25,6 +25,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private TextView textView1;
 	private TextView textView2;
 	
+	
+	
+	public static String dificultad="facil";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView1.setTypeface(lcdFont);
 		textView2.setTypeface(lcdFont);
 		
-		tabla = new Tablero("facil");
+		
+		
+		tabla = new Tablero(dificultad);
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		
 		layout = (LinearLayout) findViewById(R.id.layout2);
@@ -50,6 +55,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 		layout.addView(board);
 		
 	}
+	
+
+	
 	class DibujarBoard extends View {
 
 		public DibujarBoard (Context context) {
@@ -57,7 +65,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		}
 
 		protected void onDraw(Canvas canvas) {
-			
+			int n=9;
 			int ancho = 0;
 			if (canvas.getWidth() < canvas.getHeight())
 				ancho = board.getWidth();
@@ -65,7 +73,21 @@ public class MainActivity extends Activity implements OnTouchListener {
 			ancho = board.getHeight();
 			Casilla casilla;
 			Typeface tf = Typeface.create("Helvetica",Typeface.BOLD);
-			int tamCuad = ancho / 9;
+			int tamCuad = 0;
+		
+			if(dificultad=="facil"){
+				 //tamCuad = ancho / 9;
+				n=9;
+			}else if(dificultad=="intermedio"){
+				 //tamCuad = ancho / 18;
+				n=18;
+			}else if(dificultad=="dificil"){
+				n=36;
+			}else{
+				tamCuad = ancho / 9; //por defecto
+			}
+			
+			tamCuad = ancho / n; //por defecto
 			Paint pintar = new Paint();
 			Paint pintaNums = new Paint();
 			Paint pintaBomb = new Paint();

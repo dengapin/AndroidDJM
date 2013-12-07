@@ -55,24 +55,6 @@ public class PantallaMenu extends Activity  {
             	//setContentView(R.layout.creditos);
                 return true;
                 
-            case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "La acción ha sido ARRIBA");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "La accion ha sido CANCEL");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG,"La accion ha sido fuera del elemento de la pantalla");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
             	
             default:
                 return true;
@@ -99,35 +81,17 @@ public class PantallaMenu extends Activity  {
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
                 Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal2);
-                //setContentView(R.layout.creditos);
+                
                 return true;
                 
                 
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "La acción ha sido MOVER");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE ", Toast.LENGTH_LONG).show();
             	startActivity(actividaPrincipal2);
-            	//setContentView(R.layout.creditos);
+            
                 return true;
                 
-            case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "La acción ha sido ARRIBA");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "La accion ha sido CANCEL");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG,"La accion ha sido fuera del elemento de la pantalla");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
+                      	
             	
             default:
                 return true;
@@ -159,29 +123,10 @@ public class PantallaMenu extends Activity  {
                 
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "La acción ha sido MOVER");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE ", Toast.LENGTH_LONG).show();
             	startActivity(actividaPrincipal3);
-            	//setContentView(R.layout.creditos);
                 return true;
                 
-            case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "La acción ha sido ARRIBA");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "La accion ha sido CANCEL");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG,"La accion ha sido fuera del elemento de la pantalla");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
+                     	
             	
             default:
                 return true;
@@ -196,8 +141,7 @@ public class PantallaMenu extends Activity  {
         	
         	@Override
             public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
-
+         
             int action = MotionEventCompat.getActionMasked(event);
             Intent actividaPrincipal  =new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
             
@@ -212,7 +156,7 @@ public class PantallaMenu extends Activity  {
                 
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "La acción ha sido MOVER");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
+            
             	startActivity(actividaPrincipal);
                 return true;
                 
@@ -222,17 +166,7 @@ public class PantallaMenu extends Activity  {
             	startActivity(actividaPrincipal);
             	return true;
             
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "La accion ha sido CANCEL");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
-            	
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG,"La accion ha sido fuera del elemento de la pantalla");
-            	//Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
-            	//startActivity(actividaPrincipal);
-            	return true;
+           
             	
             	
             default:
