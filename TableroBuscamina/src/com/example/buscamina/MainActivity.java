@@ -95,7 +95,22 @@ public class MainActivity extends Activity implements OnTouchListener {
 							pintar.setStyle(Style.STROKE);
 							pintar.setARGB(200, 204, 204, 204);
 							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
-							pintaNums.setColor(Color.BLUE);
+							if(casilla.getNumvalue()==1)
+								pintaNums.setColor(Color.BLUE);
+							else if(casilla.getNumvalue()==2)
+								pintaNums.setColor(Color.GREEN);
+							else if(casilla.getNumvalue()==3)
+								pintaNums.setColor(Color.RED);
+							else if(casilla.getNumvalue()==4)
+								pintaNums.setARGB(250,160,32,240);
+							else if(casilla.getNumvalue()==5)
+								pintaNums.setARGB(255,176,48,96);
+							else if(casilla.getNumvalue()==6)
+								pintaNums.setARGB(255,64,224,208);
+							else if(casilla.getNumvalue()==7)
+								pintaNums.setColor(Color.BLACK);
+							else if(casilla.getNumvalue()==8)
+								pintaNums.setColor(Color.GRAY);
 							canvas.drawText(casilla.getNumvalue()+"",(i * tamCuad + (tamCuad / 2))-tamCuad/8,(filaact + (tamCuad / 2))+tamCuad/8, pintaNums);
 							}
 						else if(casilla.getId().equals("bomba")){
