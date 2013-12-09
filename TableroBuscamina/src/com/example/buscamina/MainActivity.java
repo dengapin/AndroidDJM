@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 
 
+
+
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -38,8 +41,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private LinearLayout layout;
 	private TextView textView1;
 	private TextView textView2;
-	private ViewGroup marco;
-	
+	private Handler TIMER = new Handler();
+    private int CONTADOR = 0;
+	private ViewGroup marco;	
 	private Imagen unaImagen;
 	private ArrayList<Imagen>imagenes;
 	private int xDelta;
@@ -55,17 +59,18 @@ public class MainActivity extends Activity implements OnTouchListener {
 		setContentView(R.layout.activity_main);
 		
 		
-		//textView1 = (TextView) findViewById(R.id.textView1);
-		//textView2 = (TextView) findViewById(R.id.textView2);
+		textView1 = (TextView) findViewById(R.id.textView1);
+		textView2 = (TextView) findViewById(R.id.textView2);
 
 		// set font style for timer and mine count to LCD style
-		//Typeface lcdFont = Typeface.createFromAsset(getAssets(),
-		//  "fonts/lcd2mono.ttf");
-		//textView1.setTypeface(lcdFont);
-		//textView2.setTypeface(lcdFont);
+		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
+		 "fonts/lcd2mono.ttf");
+		textView1.setTypeface(lcdFont);
+		textView2.setTypeface(lcdFont);
 		
 		
 		tabla = new Tablero(dificultad);
+		comenzarTiempo(); 
 		
 		//PARTE PARA EL DRAG Y DROP
 		/*
@@ -92,9 +97,36 @@ public class MainActivity extends Activity implements OnTouchListener {
 		this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
 		
 	
-	}
+	}	
 	
+	 public void comenzarTiempo(){
+         if (CONTADOR == 0){
+                 TIMER.removeCallbacks(updateTimeElasped);
+                 TIMER.postDelayed(updateTimeElasped, 1000);
+         }
+ }
+	 
+	 public void detenerTiempo(){
+         TIMER.removeCallbacks(updateTimeElasped);
+ }
+	 
+     
+	 private Runnable updateTimeElasped = new Runnable(){
+         public void run(){
+                 long MILESIMAS = System.currentTimeMillis();
+                 ++CONTADOR;
 
+                 if (CONTADOR < 10){
+                         textView2.setText("00" + Integer.toString(CONTADOR));
+                 }else if (CONTADOR < 100){
+                         textView2.setText("0" + Integer.toString(CONTADOR));
+                 }else{
+                         textView2.setText(Integer.toString(CONTADOR));
+                 }
+                 TIMER.postAtTime(this, MILESIMAS);
+                 TIMER.postDelayed(updateTimeElasped, 1000);
+         }
+ };
 	
 	class DibujarBoard extends View {
 
