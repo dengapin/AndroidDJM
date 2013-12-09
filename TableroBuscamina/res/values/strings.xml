@@ -30,7 +30,7 @@
     	
     	
     <string name="TIME">TIME</string>
-    <string name="app_configuracion">Configuracion</string>
+    <string name="app_creditos">Creditos</string>
     <string name="app_config">Configuraciones</string>
     <string name="app_instrucciones">Instrucciones</string>
     
@@ -38,9 +38,10 @@
         <string name="intermedio">Intermedio</string>
         <string name="avanzado">Avanzado</string>
         <string name="dificil">Avanzado</string>
-        <string />
         <string name="_00">00</string>
         <string name="time">TIME</string>
+        <string name="todo">TODO</string>
+        
     
     
     	
