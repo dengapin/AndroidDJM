@@ -1,71 +1,67 @@
- <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/marco"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blocFondo"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:id="@+id/marco" > 
-    	<ScrollView 
-    	 android:layout_width="wrap_content"
-    	 android:layout_height="wrap_content">
-    	 <HorizontalScrollView 
-    	 android:layout_width="wrap_content"
-    	 android:layout_height="wrap_content">
-        <LinearLayout
-         android:id="@+id/layout2"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentRight="true"
-         android:orientation="vertical" >
-    	 </LinearLayout>
-    	 </HorizontalScrollView>
-    	 </ScrollView>
-    	<!--
-    	<ImageView
-         android:id="@+id/imageView1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/layout2"
-         android:layout_below="@+id/layout2"
-         android:src="@drawable/logo" />
-	<TableRow
-         android:id="@+id/tableRow1"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignParentRight="true"
-         android:layout_below="@+id/imageView1" 
-          >
-         <TextView
-             android:id="@+id/textView1"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_column="0"
-             android:layout_weight="1"
-             android:text="000"
-             android:textAppearance="?android:attr/textAppearanceLarge" /> 
+    tools:context=".MainActivity" >
 
-         <ImageButton
-             android:id="@+id/imageButton1"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:src="@drawable/feliz" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-         <TextView
-             android:id="@+id/textView2"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_column="2"
-             android:layout_weight="1"
-             android:text="000"
-             android:textAppearance="?android:attr/textAppearanceLarge" />
-     </TableRow>
-     -->
-		
-     
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+ 
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/scrollView1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/imgfeliz" android:contentDescription="TODO"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:text="@string/time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="@string/_00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
