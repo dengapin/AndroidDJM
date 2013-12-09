@@ -1,5 +1,13 @@
 package com.example.buscamina;
 
+import java.util.ArrayList;
+
+
+
+
+
+
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -13,10 +21,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnTouchListener {
@@ -27,6 +38,14 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private LinearLayout layout;
 	private TextView textView1;
 	private TextView textView2;
+	private ViewGroup marco;
+	
+	private Imagen unaImagen;
+	private ArrayList<Imagen>imagenes;
+	private int xDelta;
+	private int yDelta;
+	
+	
 	
 	public static String dificultad="facil";
 
@@ -44,13 +63,35 @@ public class MainActivity extends Activity implements OnTouchListener {
 		//  "fonts/lcd2mono.ttf");
 		//textView1.setTypeface(lcdFont);
 		//textView2.setTypeface(lcdFont);
+		
+		
 		tabla = new Tablero(dificultad);
+		
+		//PARTE PARA EL DRAG Y DROP
+		/*
+		imagenes= new ArrayList<Imagen>();
+		
+		for (int i = 1; i <= 9; i++) {
+		    marco = (ViewGroup)findViewById(R.id.marco);
+            unaImagen = new Imagen(this);
+            unaImagen.setValor(1);
+           
+            unaImagen.setOnTouchListener(this);
+            
+            imagenes.add(unaImagen);
+            marco.addView(unaImagen);
+            
+        }
+		*/
+		//dyd
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
 		
 		board = new DibujarBoard (this);
 		board.setOnTouchListener(this);
 		this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
+		
+	
 	}
 	
 
@@ -135,6 +176,47 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View tablero, MotionEvent event) {
+		
+		//CODIGO PARA EL DRAG AND DROP
+		//NO BORRAR
+/*		
+		//dyd
+		final int X = (int) event.getRawX();
+		  final int Y = (int) event.getRawY();
+		  
+		 
+		 // View view = null;
+		switch (event.getAction() & MotionEvent.ACTION_MASK) {
+	      
+	     case MotionEvent.ACTION_DOWN:
+	         
+	         RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
+	        xDelta = X - Params.leftMargin;
+	         yDelta = Y - Params.topMargin;
+	         break;
+	     
+	     case MotionEvent.ACTION_UP:
+	         Toast.makeText(this, "mover", Toast.LENGTH_LONG).show();
+	         break;
+
+	      case MotionEvent.ACTION_MOVE:
+	       
+	          RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
+	          
+	          layoutParams.leftMargin = X - xDelta ;
+	          layoutParams.topMargin = Y - yDelta;
+	         
+	          layoutParams.rightMargin = -50;
+	          layoutParams.bottomMargin = -50;
+	         
+	          tablero.setLayoutParams(layoutParams);
+	          break;
+	          }
+		   
+marco.invalidate();
+//dyd
+*/
+
 		int action = MotionEventCompat.getActionMasked(event);
 		if(fin==false){
 		switch(action){

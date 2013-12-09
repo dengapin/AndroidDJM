@@ -27,7 +27,7 @@ public class PantallaMenu extends Activity  {
 		//Intent actividaPrincipal  =new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
         //startActivity(actividaPrincipal);
 		
-		
+		//BOTON DE NIVELES DE DIFICULTAD
 		boton1 = (Button) findViewById(R.id.botonMenu1);
         boton1.setOnTouchListener(new View.OnTouchListener() {
         	
@@ -42,20 +42,11 @@ public class PantallaMenu extends Activity  {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "CONFIGURACIONES", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "Niveles de Dificultad", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal1);
                 //setContentView(R.layout.creditos);
                 return true;
                 
-                
-            case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acci�n ha sido MOVER");
-            	//Toast.makeText(PantallaMenu.this , "ACERCA DE ", Toast.LENGTH_LONG).show();
-            	startActivity(actividaPrincipal1);
-            	//setContentView(R.layout.creditos);
-                return true;
-                
-            	
             default:
                 return true;
             }
@@ -64,7 +55,7 @@ public class PantallaMenu extends Activity  {
 		
 		
 	
-		
+		//BOTON DE ACERCA
 		boton2 = (Button) findViewById(R.id.botonMenu2);
         boton2.setOnTouchListener(new View.OnTouchListener() {
         	
@@ -79,20 +70,11 @@ public class PantallaMenu extends Activity  {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "Desarrolladores", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal2);
                 
                 return true;
-                
-                
-            case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acci�n ha sido MOVER");
-            	startActivity(actividaPrincipal2);
-            
-                return true;
-                
-                      	
-            	
+              
             default:
                 return true;
             }
@@ -100,7 +82,7 @@ public class PantallaMenu extends Activity  {
     });
 		
 		
-		
+		//BOTON DE INSTRUCCIONES
         boton3 = (Button) findViewById(R.id.botonMenu3);
         boton3.setOnTouchListener(new View.OnTouchListener() {
         	
@@ -115,19 +97,11 @@ public class PantallaMenu extends Activity  {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "ACERCA DE", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "Instrucciones del Juego", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal3);
                 //setContentView(R.layout.creditos);
                 return true;
-                
-                
-            case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "La acci�n ha sido MOVER");
-            	startActivity(actividaPrincipal3);
-                return true;
-                
-                     	
-            	
+                  	
             default:
                 return true;
             }
@@ -135,7 +109,7 @@ public class PantallaMenu extends Activity  {
     });
 		
 
-		
+		//BOTON JUGAR
 		boton = (Button) findViewById(R.id.botonMenu4);
         boton.setOnTouchListener(new View.OnTouchListener() {
         	
@@ -149,7 +123,7 @@ public class PantallaMenu extends Activity  {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "Pantalla Jugar", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "START!!", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal);
                 return true;
             	
@@ -178,14 +152,14 @@ public class PantallaMenu extends Activity  {
             
             case R.id.jugar:
             	//LA OPCION JUGAR MANDARA AL BUSCAMINAS BASICO POR DEFECTO!
-            	Toast.makeText(PantallaMenu.this , "JUGAR", Toast.LENGTH_LONG).show();
+            	Toast.makeText(PantallaMenu.this , "START!!", Toast.LENGTH_LONG).show();
                     //setContentView(R.layout.activity_main);
                     Intent actividaPrincipal  =new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
                     startActivity(actividaPrincipal);
                     return true;
                     
             case R.id.AcercaDe:
-                    Toast.makeText(PantallaMenu.this , "Acerca De", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PantallaMenu.this , "Desarrolladores", Toast.LENGTH_LONG).show();
                     setContentView(R.layout.creditos); //llamamos con esto a la respectiva pantalla de este codigo
                     return true;
                     

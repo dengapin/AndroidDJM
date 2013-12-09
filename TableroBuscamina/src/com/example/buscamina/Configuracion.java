@@ -35,7 +35,7 @@ public class Configuracion extends Activity{
             case (MotionEvent.ACTION_DOWN):
             
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(Configuracion.this , "JUGAR!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Configuracion.this , "START!!", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal1);
                 return true;
             default:
@@ -59,7 +59,7 @@ public class Configuracion extends Activity{
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(Configuracion.this , "JUGAR!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Configuracion.this , "START!!", Toast.LENGTH_LONG).show();
                 //op.nivel=2;
              	startActivity(actividaPrincipal1);
                 //setContentView(R.layout.creditos);
@@ -86,7 +86,7 @@ public class Configuracion extends Activity{
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(Configuracion.this , "JUGAR!", Toast.LENGTH_LONG).show();
+                Toast.makeText(Configuracion.this , "START!!", Toast.LENGTH_LONG).show();
                 
              	startActivity(actividaPrincipal1);
            

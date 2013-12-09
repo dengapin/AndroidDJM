@@ -19,9 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
-        android:text="CREADORES"
+        android:text="DESARROLLADORES"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="5mm" />
+        android:textSize="4mm" />
 
     <TextView
         android:id="@+id/textView2"
