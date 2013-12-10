@@ -32,14 +32,17 @@ public final class R {
         public static final int fondo_acerca=0x7f020008;
         public static final int fondo_instrucciones=0x7f020009;
         public static final int fondo_principal=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int img_feliz=0x7f02000c;
-        public static final int instrucciones=0x7f02000d;
-        public static final int jugar=0x7f02000e;
-        public static final int menu_principal=0x7f02000f;
-        public static final int sorprendido=0x7f020010;
-        public static final int triste=0x7f020011;
-        public static final int wrap=0x7f020012;
+        public static final int foto_denisse=0x7f02000b;
+        public static final int foto_janina=0x7f02000c;
+        public static final int foto_jonathan=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int img_feliz=0x7f02000f;
+        public static final int instrucciones=0x7f020010;
+        public static final int jugar=0x7f020011;
+        public static final int menu_principal=0x7f020012;
+        public static final int sorprendido=0x7f020013;
+        public static final int triste=0x7f020014;
+        public static final int wrap=0x7f020015;
     }
     public static final class id {
         public static final int AcercaDe=0x7f080015;
