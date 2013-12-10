@@ -24,8 +24,6 @@ public class PantallaMenu extends Activity  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pantalla_menu);
 		
-		//Intent actividaPrincipal  =new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
-        //startActivity(actividaPrincipal);
 		
 		//BOTON DE NIVELES DE DIFICULTAD
 		boton1 = (Button) findViewById(R.id.botonMenu1);
@@ -36,13 +34,13 @@ public class PantallaMenu extends Activity  {
             // TODO Auto-generated method stub
 
             int action = MotionEventCompat.getActionMasked(event);
-            Intent actividaPrincipal1  =new Intent("com.example.gridview.configuracion.PRINCIPAL");
+            Intent actividaPrincipal1  =new Intent("com.example.gridview.records.PRINCIPAL");
             
             switch (action) {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "Niveles de Dificultad", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "Records del Juego", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal1);
                 //setContentView(R.layout.creditos);
                 return true;
@@ -117,13 +115,14 @@ public class PantallaMenu extends Activity  {
             public boolean onTouch(View v, MotionEvent event) {
          
             int action = MotionEventCompat.getActionMasked(event);
-            Intent actividaPrincipal  =new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
+           
+            Intent actividaPrincipal  =new Intent("com.example.gridview.configuracion.PRINCIPAL");
             
             switch (action) {
             
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
-                Toast.makeText(PantallaMenu.this , "START!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(PantallaMenu.this , "NIVELES DE DIFICULTAD", Toast.LENGTH_LONG).show();
              	startActivity(actividaPrincipal);
                 return true;
             	

@@ -84,22 +84,22 @@ public class MainActivity extends Activity implements OnTouchListener {
 			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
             unaImagen.setId(1);
-            //unaImagen.setLeft(30);
-            //unaImagen.setPadding(2, 5, 5, 5);
-            unaImagen.setOnTouchListener(this);
-            
             imagenes.add(unaImagen);
+           
             marco.addView(unaImagen);
             
+            unaImagen.setOnTouchListener(this);
+            
+            
         }
-		
-		/*ima = (ImageView)findViewById(R.id.imageView3);
-		marco = (ViewGroup)findViewById(R.id.contenedor);
+		/*
+		ima = (ImageView)findViewById(R.drawable.bandera);
+		marco = (ViewGroup)findViewById(R.id.linearLayout1);
 		ima= new ImageView(this);
 		ima.setId(1);
 		ima.setOnTouchListener(this);
 		marco.addView(ima);
-		*/	
+			*/
 		
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
@@ -219,48 +219,52 @@ public class MainActivity extends Activity implements OnTouchListener {
 	}
 
 	@Override
-public boolean onTouch(View tablero, MotionEvent event) {
+public boolean onTouch(View v, MotionEvent event) {
 		
 		final int X = (int) event.getRawX();
 		final int Y = (int) event.getRawY();
+		
 		int xDelta = 0;
 		int yDelta=0;
 		
-		int action = MotionEventCompat.getActionMasked(event);
-		
-		
-		if(tablero.getId()==1){
-		
+		if(( v.getId())==1 ){
+	
 		//EVENTO PARA MOVER LA IMAGEN
 		switch(event.getAction() & MotionEvent.ACTION_MASK){
 		case (MotionEvent.ACTION_DOWN):
-			RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
+			
+			
+			//LinearLayout.LayoutParams Params = (LinearLayout.LayoutParams)v.getLayoutParams();
+			RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) v.getLayoutParams();
 			xDelta = X - Params.leftMargin;
 			yDelta = Y - Params.topMargin;
-			Toast.makeText(MainActivity.this , "dd", Toast.LENGTH_LONG).show();
+			
+			//xDelta = (int) ima.getX();
+			//yDelta  =(int) ima.getY();
+			
+			marco.invalidate();
 			
     		break;
 		
-		case(MotionEvent.ACTION_UP):
-			Toast.makeText(MainActivity.this , "dd", Toast.LENGTH_LONG).show();
-    		
+		    		
 		case MotionEvent.ACTION_MOVE:
-		       
-	          RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
-	          
-	          layoutParams.leftMargin = X - xDelta ;
+	          RelativeLayout.LayoutParams layoutParams = 
+	          (RelativeLayout.LayoutParams) v.getLayoutParams();
+	          layoutParams.leftMargin = X - xDelta;
 	          layoutParams.topMargin = Y - yDelta;
 	         
-	          layoutParams.rightMargin = -50;
-	          layoutParams.bottomMargin = -50;
+	          layoutParams.rightMargin = -100;
+	          layoutParams.bottomMargin = -100;
 	         
-	          tablero.setLayoutParams(layoutParams);
-	          
+	          v.setLayoutParams(layoutParams);
+	          marco.invalidate();
 			break;
-		}marco.invalidate();
-		}	
+		}//
+		}
 		
 		//PARA LAS CUADRICULAS
+		
+		int action = MotionEventCompat.getActionMasked(event);
 		if(fin==false){
 		switch(action){
 		case (MotionEvent.ACTION_DOWN):

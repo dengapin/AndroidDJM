@@ -11,34 +11,34 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
-        android:text="NIVELES DE DIFICULTAD"
+        android:text="@string/niveles_de_dificultad"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/idbotonfacil"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="40dp"
-        android:textColor="#ffffff"
-        android:text="@string/facil" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="@string/facil"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/idbotonintermedio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textColor="#ffffff"
-        android:text="@string/intermedio" />
+        android:text="@string/intermedio"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/idbotonavanzado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textColor="#ffffff"
-        android:text="@string/avanzado" />
+        android:text="@string/avanzado"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

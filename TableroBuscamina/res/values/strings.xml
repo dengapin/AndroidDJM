@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">buscaMina</string>
+    <string name="app_name">BuscaMinas</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="titulo_inicio">BuscaminasDJM!</string>
@@ -20,7 +20,7 @@
         <string name="Jonathan_M">JONATHAN MENDIETA</string>
         
         <string name="MENU">MENU!</string>
-    	<string name="DIFICULTAD">DIFICULTAD</string>
+    	<string name="DIFICULTAD">RECORDS</string>
     	<string name="ACERCA_DE">ACERCA DE</string>
     	<string name="bla"></string>
     	<string name="ooo"></string>
@@ -29,10 +29,10 @@
 
     	
     	
-    <string name="TIME">TIME</string>
-    <string name="app_creditos">Creditos</string>
-    <string name="app_config">Configuraciones</string>
-    <string name="app_instrucciones">Instrucciones</string>
+    	<string name="TIME">TIME</string>
+    	<string name="app_creditos">Creditos</string>
+    	<string name="app_config">Configuraciones</string>
+    	<string name="app_instrucciones">Instrucciones</string>
     
     	<string name="facil">Fácil</string>
         <string name="intermedio">Intermedio</string>
@@ -41,6 +41,10 @@
         <string name="_00">00</string>
         <string name="time">TIME</string>
         <string name="todo">TODO</string>
+        <string name="niveles_de_dificultad">NIVELES DE DIFICULTAD</string>
+        
+        <string name="app_records">Records</string>
+        
         
     
     
