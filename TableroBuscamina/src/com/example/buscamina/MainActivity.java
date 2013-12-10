@@ -1,17 +1,16 @@
 package com.example.buscamina;
 
+/**
+ * Clase principal del Juego Buscamina
+ * Contiene el layout donde se forma el tablero
+ * El layout que contiene el cronometro y el emoticon
+ * Tambien se encuentra el drag and drop
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
 import java.util.ArrayList;
-
-
-
-
-
-
-
-
-
-
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -45,7 +44,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private TextView textView1;
 	private TextView textView2;
 	private Handler TIMER = new Handler();
-    private int CONTADOR = 0;
+        private int CONTADOR = 0;
 	private ViewGroup marco;	
 	
 	private int xDelta;
@@ -54,6 +53,22 @@ public class MainActivity extends Activity implements OnTouchListener {
 	
 	
 	public static String dificultad="facil";
+	
+	
+     /** 
+     * Funcion principal dibuja el tablero de buscamina segun la dificultad que se le manda
+     * @param inicio Bandera que corresponde al inicio del juego.
+     * @param fin Bandera que corresponde al fin del juego .
+     * @param board Posicion en x con respecto al tablero.
+     * @param DibujarBoard Pinta el tablero, los numeros y las minas.
+     * @param id Valor de la casilla.
+     * @param dificultad devuelve el tablero de dimensiones segun su valor
+     * @param CONTADOR variable entera que almacena los segundos de juego
+     * @param textView1 Titulo del cronometro
+     * @param textView2 Cronometro del juego
+     * @param CONTADOR variable entera que almacena los segundos de juego
+     */
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +79,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView1 = (TextView) findViewById(R.id.textView1);
 		textView2 = (TextView) findViewById(R.id.textView2);
 
-		// set font style for timer and mine count to LCD style
+		// EStilo LCD para cronometro
 		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
 		 "fonts/lcd2mono.ttf");
 		textView1.setTypeface(lcdFont);
