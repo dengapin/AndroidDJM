@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/marco"
+    android:id="@+id/contenedor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bloc_fondo"
@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity"
+    >
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -30,13 +31,13 @@
         </HorizontalScrollView>
     </ScrollView>
  
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/scrollView1"
+        android:layout_marginTop="45dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -44,13 +45,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img_feliz" android:contentDescription="TODO"/>
-    </LinearLayout>
-
-    <TextView
+        
+        <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
         android:text="@string/time"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -63,5 +62,16 @@
         android:layout_below="@+id/textView1"
         android:text="@string/_00"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+   
+    
+    <!-- <ImageView 
+         android:id="@+id/imageView3"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:src="@drawable/ic_launcher" android:contentDescription="TODO"
+         
+         />   -->	
+    
+    </LinearLayout>
 
 </RelativeLayout>

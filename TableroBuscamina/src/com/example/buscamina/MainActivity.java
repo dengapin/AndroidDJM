@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 
 
+
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -27,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,15 +47,14 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Handler TIMER = new Handler();
     private int CONTADOR = 0;
 	private ViewGroup marco;	
-	private Imagen unaImagen;
-	private ArrayList<Imagen>imagenes;
+	
 	private int xDelta;
 	private int yDelta;
-	
+	private ImageView ima;
 	
 	
 	public static String dificultad="facil";
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,23 +74,33 @@ public class MainActivity extends Activity implements OnTouchListener {
 		tabla = new Tablero(dificultad);
 		comenzarTiempo(); 
 		
-		//PARTE PARA EL DRAG Y DROP
-		/*
-		imagenes= new ArrayList<Imagen>();
+		
+		Imagen unaImagen;
+		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();
+				
 		
 		for (int i = 1; i <= 9; i++) {
-		    marco = (ViewGroup)findViewById(R.id.marco);
+			
+			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
-            unaImagen.setValor(1);
-           
+            unaImagen.setId(1);
+            //unaImagen.setLeft(30);
+            //unaImagen.setPadding(2, 5, 5, 5);
             unaImagen.setOnTouchListener(this);
             
             imagenes.add(unaImagen);
             marco.addView(unaImagen);
             
         }
-		*/
-		//dyd
+		
+		/*ima = (ImageView)findViewById(R.id.imageView3);
+		marco = (ViewGroup)findViewById(R.id.contenedor);
+		ima= new ImageView(this);
+		ima.setId(1);
+		ima.setOnTouchListener(this);
+		marco.addView(ima);
+		*/	
+		
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
 		
@@ -207,32 +219,33 @@ public class MainActivity extends Activity implements OnTouchListener {
 	}
 
 	@Override
-	public boolean onTouch(View tablero, MotionEvent event) {
+public boolean onTouch(View tablero, MotionEvent event) {
 		
-		//CODIGO PARA EL DRAG AND DROP
-		//NO BORRAR
-/*		
-		//dyd
 		final int X = (int) event.getRawX();
-		  final int Y = (int) event.getRawY();
-		  
-		 
-		 // View view = null;
-		switch (event.getAction() & MotionEvent.ACTION_MASK) {
-	      
-	     case MotionEvent.ACTION_DOWN:
-	         
-	         RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
-	        xDelta = X - Params.leftMargin;
-	         yDelta = Y - Params.topMargin;
-	         break;
-	     
-	     case MotionEvent.ACTION_UP:
-	         Toast.makeText(this, "mover", Toast.LENGTH_LONG).show();
-	         break;
-
-	      case MotionEvent.ACTION_MOVE:
-	       
+		final int Y = (int) event.getRawY();
+		int xDelta = 0;
+		int yDelta=0;
+		
+		int action = MotionEventCompat.getActionMasked(event);
+		
+		
+		if(tablero.getId()==1){
+		
+		//EVENTO PARA MOVER LA IMAGEN
+		switch(event.getAction() & MotionEvent.ACTION_MASK){
+		case (MotionEvent.ACTION_DOWN):
+			RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
+			xDelta = X - Params.leftMargin;
+			yDelta = Y - Params.topMargin;
+			Toast.makeText(MainActivity.this , "dd", Toast.LENGTH_LONG).show();
+			
+    		break;
+		
+		case(MotionEvent.ACTION_UP):
+			Toast.makeText(MainActivity.this , "dd", Toast.LENGTH_LONG).show();
+    		
+		case MotionEvent.ACTION_MOVE:
+		       
 	          RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tablero.getLayoutParams();
 	          
 	          layoutParams.leftMargin = X - xDelta ;
@@ -242,17 +255,21 @@ public class MainActivity extends Activity implements OnTouchListener {
 	          layoutParams.bottomMargin = -50;
 	         
 	          tablero.setLayoutParams(layoutParams);
-	          break;
-	          }
-		   
-marco.invalidate();
-//dyd
-*/
-
-		int action = MotionEventCompat.getActionMasked(event);
+	          
+			break;
+		}marco.invalidate();
+		}	
+		
+		//PARA LAS CUADRICULAS
 		if(fin==false){
 		switch(action){
-			case (MotionEvent.ACTION_DOWN):
+		case (MotionEvent.ACTION_DOWN):
+			
+			Toast.makeText(MainActivity.this , "hice down", Toast.LENGTH_LONG).show();
+		
+    		break;
+		
+		case (MotionEvent.ACTION_UP):
 				for (int i = 0; i < tabla.getTabla().length; i++) {
 		            for (int j = 0; j < tabla.getTabla()[0].length; j++) {
 		            	if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())) {
@@ -261,17 +278,29 @@ marco.invalidate();
 			            		inicio=false;
 			            		accion.ActionUnwrap(tabla.getTabla()[i][j]);
 			            		pintarTablero();
-			            		return true;}
+			            		return true;
+			            		}
 		            		else{
 		            			accion.ActionUnwrap(tabla.getTabla()[i][j]);
 		            			pintarTablero();
 		            			fin = accion.testFin();
-		            			return true;}
+		            			return true;
+		            			}
 		                }
 		            }
-				}}}
+				}}
+		
+		
+		
+		return true;
+		}
 		return false;
 	}
+	
+	
+	
+	
+	
 	public void pintarTablero(){
 		this.layout.removeView(this.board);
     	this.board = new DibujarBoard(this);

@@ -16,7 +16,8 @@ Canvas canvas;
 	
 	 public Imagen(Context context) {
 		super(context);
-		setImageResource(R.drawable.ic_launcher);
+		setImageResource(R.drawable.bandera);
+		//setLeft(4);
 		
 		}
 	 
