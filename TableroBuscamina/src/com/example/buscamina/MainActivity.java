@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnTouchListener {
-	private boolean inicio=true, fin=false;
+	private boolean inicio=true, finxBomba=false, finxGanar=false;
 	private DibujarBoard  board;
 	private Tablero tabla;
 	private Acciones accion;
@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private TextView textView1;
 	private TextView textView2;
 	private Handler TIMER = new Handler();
-        private int CONTADOR = 0;
+    private int CONTADOR = 0;
 	private ViewGroup marco;	
 	
 	private int xDelta;
@@ -94,8 +94,6 @@ public class MainActivity extends Activity implements OnTouchListener {
 		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();
 				
 		
-		for (int i = 1; i <= 9; i++) {
-			
 			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
             unaImagen.setId(1);
@@ -104,9 +102,6 @@ public class MainActivity extends Activity implements OnTouchListener {
             marco.addView(unaImagen);
             
             unaImagen.setOnTouchListener(this);
-            
-            
-        }
 		/*
 		ima = (ImageView)findViewById(R.drawable.bandera);
 		marco = (ViewGroup)findViewById(R.id.linearLayout1);
@@ -120,6 +115,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		layout = (LinearLayout) findViewById(R.id.layout2);
 		
 		board = new DibujarBoard (this);
+		board.setId(2);
 		board.setOnTouchListener(this);
 		this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
 		
@@ -241,7 +237,7 @@ public boolean onTouch(View v, MotionEvent event) {
 		
 		int xDelta = 0;
 		int yDelta=0;
-		
+		if(finxBomba==false && finxGanar==false){
 		if(( v.getId())==1 ){
 	
 		//EVENTO PARA MOVER LA IMAGEN
@@ -278,39 +274,34 @@ public boolean onTouch(View v, MotionEvent event) {
 		}
 		
 		//PARA LAS CUADRICULAS
+		else if(( v.getId())==2){
+			int action = MotionEventCompat.getActionMasked(event);
+			switch(action){
+				case (MotionEvent.ACTION_DOWN):
+					return true;
 		
-		int action = MotionEventCompat.getActionMasked(event);
-		if(fin==false){
-		switch(action){
-		case (MotionEvent.ACTION_DOWN):
-			
-			Toast.makeText(MainActivity.this , "hice down", Toast.LENGTH_LONG).show();
-		
-    		break;
-		
-		case (MotionEvent.ACTION_UP):
-				for (int i = 0; i < tabla.getTabla().length; i++) {
-		            for (int j = 0; j < tabla.getTabla()[0].length; j++) {
-		            	if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())) {
-		            		if(inicio){
-			            		tabla.llenartablerobombas(i,j);
-			            		inicio=false;
-			            		accion.ActionUnwrap(tabla.getTabla()[i][j]);
-			            		pintarTablero();
-			            		return true;
-			            		}
-		            		else{
-		            			accion.ActionUnwrap(tabla.getTabla()[i][j]);
-		            			pintarTablero();
-		            			fin = accion.testFin();
-		            			return true;
-		            			}
-		                }
-		            }
-				}}
-		
-		
-		
+				case (MotionEvent.ACTION_UP):
+					for (int i = 0; i < tabla.getTabla().length; i++) {
+						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
+							if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())) {
+								if(inicio){
+									tabla.llenartablerobombas(i,j);
+									inicio=false;
+									accion.ActionUnwrap(tabla.getTabla()[i][j]);
+									pintarTablero();
+									return true;
+			            			}
+								else{
+									accion.ActionUnwrap(tabla.getTabla()[i][j]);
+									pintarTablero();
+									finxBomba = accion.getFinxBomba();
+									finxGanar = accion.getFinxGanar();
+									return true;
+		            				}
+							}
+						}
+					}}
+			}
 		return true;
 		}
 		return false;
@@ -323,8 +314,10 @@ public boolean onTouch(View v, MotionEvent event) {
 	public void pintarTablero(){
 		this.layout.removeView(this.board);
     	this.board = new DibujarBoard(this);
+    	this.board.setId(2);
     	this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
     	this.board.setOnTouchListener(this);
+    	
 	}
 	public int getTableroHeight(int casillasH){
 		return 37*casillasH;

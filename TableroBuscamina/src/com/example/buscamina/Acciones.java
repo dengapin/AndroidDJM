@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import android.widget.Toast;
+
 public class Acciones {
 private Casilla[][] tablero;
 private ArrayList<Casilla> bombas;
-private boolean fin = false;
+private boolean finxBomba = false,finxGanar = false;
 
 public Acciones(Casilla[][] tablero, ArrayList<Casilla> bombas){
 	this.tablero = tablero;
@@ -19,18 +21,17 @@ public void ActionUnwrap(Casilla casilla){
 				if(!casilla.isFlagged() && casilla.isWrapped())
 					for(Casilla temp: bombas)
 						temp.setWrapped(false);
-				this.fin = true;
+				this.finxBomba = true;
 			break;
 		case 0:
 				if(!casilla.isFlagged() && casilla.isWrapped())
 					casilla.setWrapped(false);
 					ActionUnwrapVacios(casilla);
-				this.fin = false;
 			break;
 		default:
 			if(!casilla.isFlagged() && casilla.isWrapped())
 				casilla.setWrapped(false);
-			this.fin = false;
+			this.finxGanar = testFinxGanar();
 		break;
 	}
 }
@@ -56,7 +57,22 @@ private void ActionUnwrapVacios(Casilla casilla){
 			
 	}
 }
-public boolean testFin(){
-	return this.fin;
+private boolean testFinxGanar(){
+	for(int i=0; i<this.tablero.length; i++){
+		for(int j=0; j<this.tablero[0].length; j++){
+			if(tablero[i][j].isWrapped()){
+				if(tablero[i][j].getId().equals("numero") || tablero[i][j].getId().equals("vacio")){
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+public boolean getFinxGanar(){
+	return this.finxGanar;
+}
+public boolean getFinxBomba(){
+	return this.finxBomba;
 }
 }
