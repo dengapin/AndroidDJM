@@ -46,10 +46,10 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Handler TIMER = new Handler();
     private int CONTADOR = 0;
 	private ViewGroup marco;	
-	
+	private ImageView imageview;
 	private int xDelta;
 	private int yDelta;
-	private ImageView ima;
+	private ImageView imagenCarita;
 	
 	
 	public static String dificultad="facil";
@@ -78,12 +78,14 @@ public class MainActivity extends Activity implements OnTouchListener {
 		
 		textView1 = (TextView) findViewById(R.id.textView1);
 		textView2 = (TextView) findViewById(R.id.textView2);
+		//imageview = (ImageView) findViewById(R.id.imageView1);
 
 		// EStilo LCD para cronometro
 		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
 		 "fonts/lcd2mono.ttf");
 		textView1.setTypeface(lcdFont);
 		textView2.setTypeface(lcdFont);
+		textView2.setTextColor(Color.RED);
 		
 		
 		tabla = new Tablero(dificultad);
@@ -136,14 +138,18 @@ public class MainActivity extends Activity implements OnTouchListener {
      
 	 private Runnable updateTimeElasped = new Runnable(){
          public void run(){
-                 long MILESIMAS = System.currentTimeMillis();
+                long MILESIMAS = System.currentTimeMillis();
                  ++CONTADOR;
 
                  if (CONTADOR < 10){
                          textView2.setText("00" + Integer.toString(CONTADOR));
-                 }else if (CONTADOR < 100){
+                 }
+                 
+                 
+                 else if (CONTADOR < 100){
                          textView2.setText("0" + Integer.toString(CONTADOR));
-                 }else{
+                 }
+                 else{
                          textView2.setText(Integer.toString(CONTADOR));
                  }
                  TIMER.postAtTime(this, MILESIMAS);
@@ -231,6 +237,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 public boolean onTouch(View v, MotionEvent event) {
+		//ImageView img = new ImageView(this);
 		
 		final int X = (int) event.getRawX();
 		final int Y = (int) event.getRawY();
@@ -296,20 +303,44 @@ public boolean onTouch(View v, MotionEvent event) {
 									pintarTablero();
 									finxBomba = accion.getFinxBomba();
 									finxGanar = accion.getFinxGanar();
+									if (finxBomba){
+										detenerTiempo();
+										//img.setImageResource(R.drawable.triste);
+										configurarCarita();
+									}
+									
+									if(finxGanar){
+										detenerTiempo();
+										
+									}
+									
 									return true;
 		            				}
 							}
 						}
 					}}
 			}
+
+		//img.setImageResource(R.drawable.triste);
+		
 		return true;
+		
 		}
+		
 		return false;
 	}
 	
 	
-	
-	
+   public void configurarCarita(){
+	   imagenCarita= (ImageView) findViewById(R.id.imageView1);
+	   if(this.finxBomba){
+		   imagenCarita.setImageResource(R.drawable.triste);
+		   
+	   }
+	   
+   }
+
+
 	
 	public void pintarTablero(){
 		this.layout.removeView(this.board);
