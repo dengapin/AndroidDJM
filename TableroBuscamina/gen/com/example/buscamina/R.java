@@ -52,7 +52,7 @@ public final class R {
         public static final int wrap=0x7f02001c;
     }
     public static final class id {
-        public static final int AcercaDe=0x7f090015;
+        public static final int AcercaDe=0x7f090016;
         public static final int botonMenu1=0x7f09000a;
         public static final int botonMenu2=0x7f090011;
         public static final int botonMenu3=0x7f09000b;
@@ -62,10 +62,11 @@ public final class R {
         public static final int idbotonfacil=0x7f090007;
         public static final int idbotonintermedio=0x7f090008;
         public static final int imageView1=0x7f090004;
-        public static final int jugar=0x7f090014;
+        public static final int jugar=0x7f090015;
+        public static final int layout1=0x7f090013;
         public static final int layout2=0x7f090002;
         public static final int linearLayout1=0x7f090003;
-        public static final int op_menu_principal=0x7f090013;
+        public static final int op_menu_principal=0x7f090014;
         public static final int scrollView1=0x7f090001;
         public static final int textView1=0x7f090005;
         public static final int textView2=0x7f090006;

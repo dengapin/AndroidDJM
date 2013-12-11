@@ -11,10 +11,15 @@ package com.example.buscamina;
  */
 
 import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -53,6 +59,10 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private int X=0 ;
 	private int Y=0;
 	private int i=0;
+	private SharedPreferences memoria;
+	private Editor editor;
+	private EditText nombreJugador;
+	private int ScoreSize;
 	
 	
 	
@@ -265,9 +275,30 @@ public boolean onTouch(View v, MotionEvent event) {
 									
 									if(finxGanar){
 										detenerTiempo();
+										memoria = getSharedPreferences("GameBuscaminas",Context.MODE_PRIVATE);
+										editor = memoria.edit();
+										nombreJugador = new EditText(this);
+										new AlertDialog.Builder(this)
+									    .setTitle("Has Ganado!")
+									    .setMessage("Ingresa tu nombre:")
+									    .setView(nombreJugador)
+									    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+									    	public void onClick(DialogInterface dialog, int which) {
+									        	if(!nombreJugador.getText().toString().equals(null)){
+									    		ScoreSize = getScoreNumberMemory(memoria);
+									        	editor.putString("score"+ScoreSize, nombreJugador.getText().toString()+","+CONTADOR);
+									        	editor.commit();
+									        	
+									        }}
+									     })
+									    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+									        public void onClick(DialogInterface dialog, int which) { 
+									            // do nothing
+									        }
+									     })
+									     .show();
 										
 									}
-									
 									return true;
 		            				}
 							}
@@ -311,6 +342,10 @@ public boolean onTouch(View v, MotionEvent event) {
 		return 37*casillasW;
 	}
 	
+	public int getScoreNumberMemory(SharedPreferences memory){
+		   return memory.getAll().size();
+	   } 
+	
 	
 
 	final class MyTouchListener implements View.OnTouchListener {
@@ -349,9 +384,31 @@ public boolean onTouch(View v, MotionEvent event) {
 		          layoutParams.bottomMargin = -50;
 		         
 		          objeto.setLayoutParams(layoutParams);
+		          //objeto.setId(0);
 		          marco.invalidate();
+		          
+		          
+		        
+		          
+		          
 				break;
-			}
+				
+			case MotionEvent.ACTION_UP:
+		          
+				 for (int i = 0; i < tabla.getTabla().length; i++) {
+						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
+							if (tabla.getTabla()[i][j].dentro( xDelta,yDelta )) {
+								tabla.getTabla()[i][j].setFlagged(true);
+								Toast.makeText(MainActivity.this , "Records del Juego", Toast.LENGTH_LONG).show();
+							}
+						}
+					}
+				 
+		          objeto.setId(0);
+		          marco.invalidate();
+		          marco.removeView(objeto);
+				break;
+			}//la imagen ya no se podra mover sitiene id cero
 			}
 			
 		}
