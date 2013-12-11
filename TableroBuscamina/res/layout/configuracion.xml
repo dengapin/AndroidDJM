@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/idbotonfacil"
-        android:layout_width="105dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
@@ -25,7 +25,7 @@
 
     <Button
         android:id="@+id/idbotonintermedio"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/idbotonavanzado"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"

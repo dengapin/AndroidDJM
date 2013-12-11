@@ -50,6 +50,10 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private int xDelta;
 	private int yDelta;
 	private ImageView imagenCarita;
+	private int X=0 ;
+	private int Y=0;
+	private int i=0;
+	
 	
 	
 	public static String dificultad="facil";
@@ -95,23 +99,15 @@ public class MainActivity extends Activity implements OnTouchListener {
 		Imagen unaImagen;
 		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();
 				
-		
+		for(i=1;i<20;i++){
 			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
             unaImagen.setId(1);
             imagenes.add(unaImagen);
            
             marco.addView(unaImagen);
-            
-            unaImagen.setOnTouchListener(this);
-		/*
-		ima = (ImageView)findViewById(R.drawable.bandera);
-		marco = (ViewGroup)findViewById(R.id.linearLayout1);
-		ima= new ImageView(this);
-		ima.setId(1);
-		ima.setOnTouchListener(this);
-		marco.addView(ima);
-			*/
+            unaImagen.setOnTouchListener(new MyTouchListener());
+		}   
 		
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
@@ -237,51 +233,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 public boolean onTouch(View v, MotionEvent event) {
-		//ImageView img = new ImageView(this);
-		
-		final int X = (int) event.getRawX();
-		final int Y = (int) event.getRawY();
-		
-		int xDelta = 0;
-		int yDelta=0;
-		if(finxBomba==false && finxGanar==false){
-		if(( v.getId())==1 ){
-	
-		//EVENTO PARA MOVER LA IMAGEN
-		switch(event.getAction() & MotionEvent.ACTION_MASK){
-		case (MotionEvent.ACTION_DOWN):
-			
-			
-			//LinearLayout.LayoutParams Params = (LinearLayout.LayoutParams)v.getLayoutParams();
-			RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) v.getLayoutParams();
-			xDelta = X - Params.leftMargin;
-			yDelta = Y - Params.topMargin;
-			
-			//xDelta = (int) ima.getX();
-			//yDelta  =(int) ima.getY();
-			
-			marco.invalidate();
-			
-    		break;
-		
-		    		
-		case MotionEvent.ACTION_MOVE:
-	          RelativeLayout.LayoutParams layoutParams = 
-	          (RelativeLayout.LayoutParams) v.getLayoutParams();
-	          layoutParams.leftMargin = X - xDelta;
-	          layoutParams.topMargin = Y - yDelta;
-	         
-	          layoutParams.rightMargin = -100;
-	          layoutParams.bottomMargin = -100;
-	         
-	          v.setLayoutParams(layoutParams);
-	          marco.invalidate();
-			break;
-		}//
-		}
 		
 		//PARA LAS CUADRICULAS
-		else if(( v.getId())==2){
+		 if(( v.getId())==2){
 			int action = MotionEventCompat.getActionMasked(event);
 			switch(action){
 				case (MotionEvent.ACTION_DOWN):
@@ -325,9 +279,9 @@ public boolean onTouch(View v, MotionEvent event) {
 		
 		return true;
 		
-		}
+		//}
 		
-		return false;
+		//return false;
 	}
 	
 	
@@ -356,4 +310,51 @@ public boolean onTouch(View v, MotionEvent event) {
 	public int getTableroWidth(int casillasW){
 		return 37*casillasW;
 	}
-}
+	
+	
+
+	final class MyTouchListener implements View.OnTouchListener {
+		
+		public boolean onTouch(View objeto, MotionEvent event) {
+			
+			
+			
+			X = (int) event.getRawX();
+			Y = (int) event.getRawY();
+			if(finxBomba==false && finxGanar==false){
+			if(( objeto.getId())==1 ){
+		
+			//EVENTO PARA MOVER LA IMAGEN
+			switch(event.getAction() & MotionEvent.ACTION_MASK){
+			case (MotionEvent.ACTION_DOWN):
+				
+				
+				
+				RelativeLayout.LayoutParams Params = (RelativeLayout.LayoutParams) objeto.getLayoutParams();
+				xDelta = X - Params.leftMargin;
+				yDelta = Y - Params.topMargin;
+				
+				marco.invalidate();
+				
+	    		break;
+			
+			    		
+			case MotionEvent.ACTION_MOVE:
+		          RelativeLayout.LayoutParams layoutParams = 
+		          (RelativeLayout.LayoutParams) objeto.getLayoutParams();
+		          layoutParams.leftMargin = X - xDelta;
+		          layoutParams.topMargin = Y - yDelta;
+		         
+		          layoutParams.rightMargin = -50;
+		          layoutParams.bottomMargin = -50;
+		         
+		          objeto.setLayoutParams(layoutParams);
+		          marco.invalidate();
+				break;
+			}
+			}
+			
+		}
+			return true;
+		}
+}}

@@ -53,10 +53,10 @@ public final class R {
     }
     public static final class id {
         public static final int AcercaDe=0x7f090015;
-        public static final int botonMenu1=0x7f09000d;
-        public static final int botonMenu2=0x7f09000e;
-        public static final int botonMenu3=0x7f09000f;
-        public static final int botonMenu4=0x7f090010;
+        public static final int botonMenu1=0x7f09000a;
+        public static final int botonMenu2=0x7f090011;
+        public static final int botonMenu3=0x7f09000b;
+        public static final int botonMenu4=0x7f090012;
         public static final int contenedor=0x7f090000;
         public static final int idbotonavanzado=0x7f090009;
         public static final int idbotonfacil=0x7f090007;
@@ -69,11 +69,11 @@ public final class R {
         public static final int scrollView1=0x7f090001;
         public static final int textView1=0x7f090005;
         public static final int textView2=0x7f090006;
-        public static final int textView3=0x7f09000a;
-        public static final int textView4=0x7f09000b;
-        public static final int textView5=0x7f09000c;
-        public static final int txTexto=0x7f090011;
-        public static final int txTexto2=0x7f090012;
+        public static final int textView3=0x7f09000e;
+        public static final int textView4=0x7f09000f;
+        public static final int textView5=0x7f090010;
+        public static final int txTexto=0x7f09000c;
+        public static final int txTexto2=0x7f09000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -116,6 +116,7 @@ public final class R {
         public static final int dificil=0x7f06001c;
         public static final int facil=0x7f060019;
         public static final int hello_world=0x7f060002;
+        public static final int iddes=0x7f060022;
         public static final int intermedio=0x7f06001a;
         public static final int menu1=0x7f060005;
         public static final int menu2=0x7f060006;

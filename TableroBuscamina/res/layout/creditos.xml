@@ -6,49 +6,210 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical" >
-
+       android:layout_width="fill_parent"
+       android:layout_height="70dp"
+       android:gravity="center"
+       android:orientation="vertical" >
+       
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/iddes" 
+           android:textSize="15sp"
+           android:textColor="#ffffff"
+           android:typeface="serif"
+           >
+		
+           
+           
+       </TextView>
+    
     </LinearLayout>
+    
+     
+   
+    <TableLayout 
+	 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+	>
+		
+		<TableRow
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingBottom = "10px"
+		>
+			<LinearLayout 
+			  
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"
+		   	>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:text="DESARROLLADORES"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="4mm" />
+			   	<Button
+			   	    android:id="@+id/botonMenu1"
+			   	    android:layout_width="80dp"
+			   	    android:layout_height="90dp"
+			   	    android:layout_gravity="center_horizontal"
+			   	    android:background="@drawable/foto_denisse" />
+			    
+			    
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:text="Jonathan Mendieta"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="Dennise Pintado"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+			<LinearLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:orientation="vertical"
+			    android:paddingLeft="20px" >
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Janina Costa"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="center"
+			        android:text="@string/Denisse_Pintado"
+			        android:textColor="#ffffff"
+			        android:textStyle="italic"
+			        android:typeface="serif" />
+			</LinearLayout>
+		    
+ 		</TableRow>
+ 		
+		<TableRow
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingBottom = "10px"
+		>
+			<LinearLayout 
+			  
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"
+		   	>
+
+			   	<Button
+			   	    android:id="@+id/botonMenu1"
+			   	    android:layout_width="80dp"
+			   	    android:layout_height="90dp"
+			   	    android:layout_gravity="center_horizontal"
+			   	    android:background="@drawable/foto_jonathan" />
+			    
+			   
+
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+			
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px"
+		   	>
+			   	
+			 
+			    
+			    <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="italic"
+				  	android:textColor="#ffffff"
+				  	android:text="@string/Jonathan_M"
+				  	android:typeface="serif"
+			  	/>
+		    </LinearLayout>
+		    
+		    
+ 		</TableRow>
+		
+ 		<TableRow
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingTop = "20px"
+			android:paddingBottom = "10px"
+		>
+		
+			<LinearLayout 
+			  
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"
+		   	>
+			   			   	
+			   	<Button
+			   	    android:id="@+id/botonMenu3"
+			   	    android:layout_width="80dp"
+			   	    android:layout_height="90dp"
+			   	    android:layout_gravity="center_horizontal"
+			   	    android:background="@drawable/foto_janina" />
+			    
+			    
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+			    
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px">
+		   	
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="center"
+			        android:text="@string/Janina_Costa"
+			        android:textColor="#ffffff"
+			        android:textStyle="italic"
+			        android:typeface="serif" />
+
+		    </LinearLayout>
+		    
+ 		</TableRow>
+	
+	</TableLayout>
+    
+    
+    <TextView  
+		android:id="@+id/txTexto"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textStyle="bold"
+    	android:textColor="#ffffff"
+    	android:text="@string/bla"
+    />
+    
+    <TextView  
+		android:id="@+id/txTexto2"		
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textColor="#ffffff"    	
+    	android:textStyle="bold"
+    	android:text="@string/ooo"
+    />
+
 
 </LinearLayout>
-
