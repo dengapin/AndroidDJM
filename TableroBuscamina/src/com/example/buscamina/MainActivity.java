@@ -109,7 +109,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		Imagen unaImagen;
 		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();
 				
-		for(i=1;i<20;i++){
+		for(i=1;i<100;i++){
 			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
             unaImagen.setId(1);
@@ -184,17 +184,32 @@ public class MainActivity extends Activity implements OnTouchListener {
 				for (int i = 0; i < tabla.getTabla()[0].length; i++) {
 					casilla = tabla.getTabla()[j][i];
 					if(inicio){
-						pintar.setARGB(153, 204, 204, 204);
 						pintar.setStyle(Paint.Style.FILL);
-						canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+						if (casilla.isWrapped()){
+							if(casilla.isFlagged()==true){
+								pintar.setARGB(100, 255, 0, 0);
+								canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+							}
+							else{
+								pintar.setARGB(153, 204, 204, 204);
+								canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+							}
+							}
 						casilla.fijarxy(i * tamCuad, filaact, tamCuad);
 					}
 					else{
 					pintar.setStyle(Paint.Style.FILL);
 					casilla.fijarxy(i * tamCuad, filaact, tamCuad);
 					if (casilla.isWrapped()){
-						pintar.setARGB(153, 204, 204, 204);
-						canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);}
+						if(casilla.isFlagged()==true){
+							pintar.setARGB(100, 255, 0, 0);
+							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+						}
+						else{
+							pintar.setARGB(153, 204, 204, 204);
+							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+						}
+						}
 					else{
 						if(casilla.getId().equals("vacio")){
 							pintar.setARGB(0, 0, 0, 0);
@@ -397,9 +412,14 @@ public boolean onTouch(View v, MotionEvent event) {
 		          
 				 for (int i = 0; i < tabla.getTabla().length; i++) {
 						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
-							if (tabla.getTabla()[i][j].dentro( xDelta,yDelta )) {
-								tabla.getTabla()[i][j].setFlagged(true);
+							if (tabla.getTabla()[i][j].dentro(X-xDelta-39,Y-yDelta )) {
+								if(tabla.getTabla()[i][j].isFlagged())
+								tabla.getTabla()[i][j].setFlagged(false);
+								else
+									tabla.getTabla()[i][j].setFlagged(true);
 								Toast.makeText(MainActivity.this , "Records del Juego", Toast.LENGTH_LONG).show();
+								Toast.makeText(MainActivity.this , tabla.getTabla()[i][j].getX()+"", Toast.LENGTH_LONG).show();
+								Toast.makeText(MainActivity.this , tabla.getTabla()[i][j].getY()+"", Toast.LENGTH_LONG).show();
 							}
 						}
 					}
@@ -407,6 +427,7 @@ public boolean onTouch(View v, MotionEvent event) {
 		          objeto.setId(0);
 		          marco.invalidate();
 		          marco.removeView(objeto);
+		          pintarTablero();
 				break;
 			}//la imagen ya no se podra mover sitiene id cero
 			}

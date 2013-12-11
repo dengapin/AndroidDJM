@@ -4,7 +4,7 @@ package com.example.buscamina;
 public class Casilla{
     private int x,y,ancho,numvalue=0;
     public int contenido=0,posx,posy;
-    private boolean wrapped=true,flagged;
+    private boolean wrapped=true,flagged=false;
     private String id;
     
     public Casilla(int x, int y, String id){
