@@ -1,0 +1,94 @@
+\section{com.\-example.\-buscamina.\-Main\-Activity Class Reference}
+\label{classcom_1_1example_1_1buscamina_1_1_main_activity}\index{com.\-example.\-buscamina.\-Main\-Activity@{com.\-example.\-buscamina.\-Main\-Activity}}
+
+
+Inheritance diagram for com.\-example.\-buscamina.\-Main\-Activity\-:
+
+
+Collaboration diagram for com.\-example.\-buscamina.\-Main\-Activity\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Dibujar\-Board}
+\item 
+class {\bfseries My\-Touch\-Listener}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries comenzar\-Tiempo} ()\label{classcom_1_1example_1_1buscamina_1_1_main_activity_a15298a68ce32cabd192d99fc40cd4397}
+
+\item 
+void {\bfseries detener\-Tiempo} ()\label{classcom_1_1example_1_1buscamina_1_1_main_activity_acb7654b22d2bc0b845d7f75aa17177ac}
+
+\item 
+boolean {\bfseries on\-Create\-Options\-Menu} (Menu menu)\label{classcom_1_1example_1_1buscamina_1_1_main_activity_ab6f79265a2a00c349a78b4da0ba107dd}
+
+\item 
+boolean {\bfseries on\-Touch} (View v, Motion\-Event event)\label{classcom_1_1example_1_1buscamina_1_1_main_activity_ab895492dcef94c260ec0c1c431dee67c}
+
+\item 
+void {\bfseries configurar\-Carita} ()\label{classcom_1_1example_1_1buscamina_1_1_main_activity_aaecabb1a4e8e579a78ac5e9675b1a55f}
+
+\item 
+void {\bfseries pintar\-Tablero} ()\label{classcom_1_1example_1_1buscamina_1_1_main_activity_ac7fba346c56eff284044bf71b8dac600}
+
+\item 
+int {\bfseries get\-Tablero\-Height} (int casillas\-H)\label{classcom_1_1example_1_1buscamina_1_1_main_activity_ac46f49e25e2e5ff70d01720a45f250c6}
+
+\item 
+int {\bfseries get\-Tablero\-Width} (int casillas\-W)\label{classcom_1_1example_1_1buscamina_1_1_main_activity_a67bbee7494400bcb19a6bd870a55a701}
+
+\item 
+int {\bfseries get\-Score\-Number\-Memory} (Shared\-Preferences memory)\label{classcom_1_1example_1_1buscamina_1_1_main_activity_acacd5b454d1a448693c664e5a55d4dc6}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static String {\bfseries dificultad} =\char`\"{}facil\char`\"{}\label{classcom_1_1example_1_1buscamina_1_1_main_activity_ab8f5155be2ad6f326c36a68b6ad90d4f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf on\-Create} (Bundle saved\-Instance\-State)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{com\-::example\-::buscamina\-::\-Main\-Activity@{com\-::example\-::buscamina\-::\-Main\-Activity}!on\-Create@{on\-Create}}
+\index{on\-Create@{on\-Create}!com::example::buscamina::MainActivity@{com\-::example\-::buscamina\-::\-Main\-Activity}}
+\subsubsection[{on\-Create}]{\setlength{\rightskip}{0pt plus 5cm}void com.\-example.\-buscamina.\-Main\-Activity.\-on\-Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\-Instance\-State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classcom_1_1example_1_1buscamina_1_1_main_activity_adbf4664d66f69435cbce6b1626fc6324}
+Funcion principal dibuja el tablero de buscamina segun la dificultad que se le manda 
+\begin{DoxyParams}{Parameters}
+{\em inicio} & Bandera que corresponde al inicio del juego. \\
+\hline
+{\em fin} & Bandera que corresponde al fin del juego . \\
+\hline
+{\em board} & Posicion en x con respecto al tablero. \\
+\hline
+{\em Dibujar\-Board} & Pinta el tablero, los numeros y las minas. \\
+\hline
+{\em id} & Valor de la casilla. \\
+\hline
+{\em dificultad} & devuelve el tablero de dimensiones segun su valor \\
+\hline
+{\em C\-O\-N\-T\-A\-D\-O\-R} & variable entera que almacena los segundos de juego \\
+\hline
+{\em text\-View1} & Titulo del cronometro \\
+\hline
+{\em text\-View2} & Cronometro del juego \\
+\hline
+{\em C\-O\-N\-T\-A\-D\-O\-R} & variable entera que almacena los segundos de juego \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Main\-Activity.\-java\end{DoxyCompactItemize}

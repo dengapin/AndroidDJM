@@ -42,8 +42,8 @@
 
 			   	<Button
 			   	    android:id="@+id/botonMenu1"
-			   	    android:layout_width="90dp"
-			   	    android:layout_height="90dp"
+			   	    android:layout_width="110dp"
+			   	    android:layout_height="110dp"
 			   	    android:background="@drawable/boton_configuraciones" />
 			    
 			    <TextView
@@ -52,7 +52,8 @@
 			        android:gravity="center"
 			        android:text="@string/DIFICULTAD"
 			        android:textColor="#ffffff"
-			        android:textStyle="bold" />
+			        android:textStyle="bold" 
+			        android:textSize="18dp"/>
 
 		    </LinearLayout>
 		    
@@ -68,8 +69,8 @@
 			   	
 			    <Button
 			        android:id="@+id/botonMenu2"
-			        android:layout_width="90dp"
-			        android:layout_height="90dp"
+			        android:layout_width="110dp"
+			        android:layout_height="110dp"
 			        android:background="@drawable/boton_acercade" />
 			    
 			    <TextView  
@@ -79,6 +80,7 @@
 				  	android:textStyle="bold"
 				  	android:textColor="#ffffff"
 				  	android:text="@string/ACERCA_DE"
+				  	android:textSize="18dp"
 			  	/>
 		    </LinearLayout>
 		    
@@ -106,8 +108,8 @@
 			   			   	
 			   	<Button
 			   	    android:id="@+id/botonMenu3"
-			   	    android:layout_width="90dp"
-			   	    android:layout_height="90dp"
+			   	    android:layout_width="110dp"
+			   	    android:layout_height="110dp"
 			   	    android:background="@drawable/boton_instrucciones" />
 			    
 			    <TextView  
@@ -117,6 +119,7 @@
 				  	android:textStyle="bold"
 				  	android:textColor="#ffffff"
 				  	android:text="@string/INSTRUCCIONES"
+				  	android:textSize="16dp"
 			  	/>
 		    </LinearLayout>
 		    
@@ -131,8 +134,8 @@
 		   	
 			   		<Button
 			   		    android:id="@+id/botonMenu4"
-			   		    android:layout_width="90dp"
-			   		    android:layout_height="90dp"
+			   		    android:layout_width="110dp"
+			   		    android:layout_height="110dp"
 			   		    android:background="@drawable/boton_jugar" />
 			   				    
 			    <TextView  
@@ -142,6 +145,7 @@
 				  	android:textStyle="bold"
 				  	android:textColor="#ffffff"
 				  	android:text="@string/JUGAR"
+				  	android:textSize="18dp"
 			  	/>
 		    </LinearLayout>
 		    

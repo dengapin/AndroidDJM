@@ -15,9 +15,10 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="@string/iddes" 
-           android:textSize="15sp"
+           android:textSize="25sp"
            android:textColor="#ffffff"
            android:typeface="serif"
+           android:textStyle="bold"
            >
 		
            
@@ -77,8 +78,10 @@
 			        android:layout_gravity="center"
 			        android:text="@string/Denisse_Pintado"
 			        android:textColor="#ffffff"
-			        android:textStyle="italic"
-			        android:typeface="serif" />
+			        android:textStyle="bold"
+			        android:typeface="sans"
+			        android:textSize="18dp"
+			        />
 			</LinearLayout>
 		    
  		</TableRow>
@@ -127,10 +130,12 @@
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
-				  	android:textStyle="italic"
+				  	android:textStyle="bold"
 				  	android:textColor="#ffffff"
 				  	android:text="@string/Jonathan_M"
-				  	android:typeface="serif"
+				  	android:typeface="sans"
+				  	android:textSize="18dp"
+				  	
 			  	/>
 		    </LinearLayout>
 		    
@@ -181,8 +186,9 @@
 			        android:gravity="center"
 			        android:text="@string/Janina_Costa"
 			        android:textColor="#ffffff"
-			        android:textStyle="italic"
-			        android:typeface="serif" />
+			        android:textStyle="bold"
+			        android:typeface="sans"
+			        android:textSize="18dp" />
 
 		    </LinearLayout>
 		    
