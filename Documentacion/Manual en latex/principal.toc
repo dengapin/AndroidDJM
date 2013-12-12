@@ -1,0 +1,4 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{5}{section.1}
+\contentsline {section}{\numberline {2}Descripci\IeC {\'o}n del Juego Buscamina}{5}{section.2}
+\contentsline {section}{\numberline {3}Bibliograf\IeC {\'\i }a}{13}{section.3}

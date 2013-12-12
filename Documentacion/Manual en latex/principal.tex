@@ -1,0 +1,60 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}%para caracteres especiales
+\usepackage{color}
+\usepackage{array}
+\usepackage[Spanish]{babel}%idioma
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}%para incluir graficos
+\usepackage{ragged2e}
+\usepackage[colorlinks,linkcolor=black]{hyperref}%para hacer hipervinculos
+\usepackage{multicol}%para generar columnas
+\usepackage{algpseudocode}%para pseudocodigo
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{enumerate}
+
+
+\addtolength{\textwidth}{2cm}
+\addtolength{\hoffset}{-1cm}
+
+
+
+
+
+\begin{document}
+
+\setlength{\topmargin}{-0,2in}
+%caratula
+
+
+\vspace*{\fill}
+			\begin{center}
+				\textbf{
+					\vspace{-0.7em}
+					ESCUELA SUPERIOR POLITÉCNICA DEL LITORAL
+				}
+				\line(1,0){380}\\		
+				\scriptsize{FACULTAD DE INGENIERÍA EN ELECTRICIDAD Y COMPUTACIÓN}
+				
+				\vspace{2.5em}
+				\includegraphics[scale=0.5]{image_buscamina/espol.jpg} 
+			\end{center}
+			
+			\begin{center}
+				\vspace{2.5em}
+				Lenguajes de Programación
+				\\II Término - 2013\\
+				\vspace{3.5em}  %espacio entre linea anterior y la siguiente
+				\textbf{"Proyecto Primer Parcial''}
+				\vspace{5em}
+			\end{center}	
+
+\vspace*{\fill}
+\newpage 
+
+\tableofcontents
+
+\newpage
+\input{manual_usuario_buscamina}
+\end{document}
