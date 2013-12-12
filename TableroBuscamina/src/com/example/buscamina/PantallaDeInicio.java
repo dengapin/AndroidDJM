@@ -1,5 +1,14 @@
 package com.example.buscamina;
 
+
+/**
+ * Clase que llama a la primera pantalla
+ * La cual muestra la imagen de portada por unos segundos
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;

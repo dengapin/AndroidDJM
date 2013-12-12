@@ -1,5 +1,12 @@
 package com.example.buscamina;
 
+/**
+ * Clase que contiene el archivo con los records del juego
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 

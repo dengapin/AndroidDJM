@@ -1,4 +1,14 @@
 package com.example.buscamina;
+
+
+/**
+ * Clase que genera el tablero con bombas, numeros y secciones vacias
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +18,14 @@ private Casilla[][] tabla;
 private ArrayList <Casilla> bombas, vacios;
 private String dificultad;
 
+/** 
+ * Parametros de la clase tablero
+ * @param tabla arreglo bidimensional que genera el tablero en el layout
+ * @param bombas se colocan bombas en posiciones aleatorias del arreglo 
+ * @param vacios se generan casillas vacias en el tablero
+ * @param dificultad string que servira de base para la dimension que se generara del tablero
+*/
+
 public Tablero(String dificultad){
 	this.bombas = new ArrayList<Casilla>();
 	this.vacios = new ArrayList<Casilla>();
@@ -15,6 +33,7 @@ public Tablero(String dificultad){
     this.tabla = creartablero(dificultad);
 }
         
+
 private Casilla[][] creartablero(String dificultad){
 	Casilla[][] tabla = null;
 	if(dificultad.equals("facil")){
@@ -111,9 +130,17 @@ private void llenartablerovacios(){
 					this.vacios.add(vacio);}}}
 }
 
+/** Arreglo de casillas con bombas
+ * @return casillas donde hay bombas
+ */
+
 public ArrayList <Casilla> getBombas(){
     return this.bombas;
 }
+
+/** Arreglo de casillas vacias
+ * @return casillas vacias
+ */
 public ArrayList <Casilla> getVacios(){
     return this.vacios;
 }

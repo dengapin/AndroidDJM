@@ -1,4 +1,12 @@
 package com.example.buscamina;
+
+
+/**
+ * Clase para sonido en la pantalla inicial
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;

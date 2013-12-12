@@ -1,6 +1,15 @@
 package com.example.buscamina;
 
 
+/**
+ *  @brief Clase que genera la casilla y contiene todas las propiedades de la misma
+ * La cual se utilizara a lo largo del juego como un objeto que se tomara para setear valores en el
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
+
 public class Casilla{
     private int x,y,ancho,numvalue=0;
     public int contenido=0,posx,posy;

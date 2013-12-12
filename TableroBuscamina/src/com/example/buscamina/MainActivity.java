@@ -258,7 +258,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 	@Override
 public boolean onTouch(View v, MotionEvent event) {
-		
+		if(finxBomba==false && finxGanar==false){
 		//PARA LAS CUADRICULAS
 		 if(( v.getId())==2){
 			int action = MotionEventCompat.getActionMasked(event);
@@ -322,7 +322,7 @@ public boolean onTouch(View v, MotionEvent event) {
 			}
 
 		//img.setImageResource(R.drawable.triste);
-		
+		}
 		return true;
 		
 		//}
@@ -417,9 +417,6 @@ public boolean onTouch(View v, MotionEvent event) {
 								tabla.getTabla()[i][j].setFlagged(false);
 								else
 									tabla.getTabla()[i][j].setFlagged(true);
-								Toast.makeText(MainActivity.this , "Records del Juego", Toast.LENGTH_LONG).show();
-								Toast.makeText(MainActivity.this , tabla.getTabla()[i][j].getX()+"", Toast.LENGTH_LONG).show();
-								Toast.makeText(MainActivity.this , tabla.getTabla()[i][j].getY()+"", Toast.LENGTH_LONG).show();
 							}
 						}
 					}

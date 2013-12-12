@@ -1,6 +1,16 @@
 package com.example.buscamina;
 
+/**
+ * Clase acciones determina cuando el tablero esta lleno de bombas
+ * o esta vacio o cuando gana el juego segun las casillas que activo
+ * @author Jonathan Mendieta
+ * @author Dennise Pintado
+ * @author Janina Costa
+ */
+
+
 import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,6 +20,16 @@ public class Acciones {
 private Casilla[][] tablero;
 private ArrayList<Casilla> bombas;
 private boolean finxBomba = false,finxGanar = false;
+
+
+
+/** 
+ *  @brief Funcion que realiza acciones de acuerdo al estado de sus casillas
+ * @param tablero arreglo que contiene una serie de casillas segun su dificultad
+ * @param bombas arreglo de objetos casillas con una bomba segun su posicion aleatoria generada por el primer evento click
+ * @param finxBomba indica cuando se termina el juego debido a que el usuario a encontrado una bomba
+ * @param finxBomba se acaba el juego debido a que ha ganado
+*/
 
 public Acciones(Casilla[][] tablero, ArrayList<Casilla> bombas){
 	this.tablero = tablero;
@@ -57,6 +77,11 @@ private void ActionUnwrapVacios(Casilla casilla){
 			
 	}
 }
+
+/** Obtiene verdadero o falso segun la validacion
+ * @return si gana el juego al descubrir numeros y vacios
+ */
+
 private boolean testFinxGanar(){
 	for(int i=0; i<this.tablero.length; i++){
 		for(int j=0; j<this.tablero[0].length; j++){
