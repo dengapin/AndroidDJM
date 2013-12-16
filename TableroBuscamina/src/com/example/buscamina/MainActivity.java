@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -27,6 +28,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -72,6 +75,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private String textHour, textMin, textSec;
 	private int remainder, hour, min, sec;
 	public static String dificultad="facil";
+	public static final String DEBUG_TAG = "GesturesActivity";
 	
 	
      /** 
@@ -137,6 +141,37 @@ public class MainActivity extends Activity implements OnTouchListener {
                 return false;
             }
         });
+        
+        
+        imagenCarita= (ImageView) findViewById(R.id.imageView1);
+		imagenCarita.setOnTouchListener(new View.OnTouchListener() {
+        	
+        	@Override
+            public boolean onTouch(View v, MotionEvent event) {
+            
+            int action = MotionEventCompat.getActionMasked(event);
+            Intent actividaPrincipal1 = new Intent("com.example.gridview.pantalla_de_inicio.PRINCIPAL");
+            
+            
+            
+            switch (action) {
+            
+            case (MotionEvent.ACTION_DOWN):
+            
+                Log.d(DEBUG_TAG, "La accion ha sido ABAJO");
+                Toast.makeText(MainActivity.this , "JUEGO REINICIADO!", Toast.LENGTH_LONG).show();
+             	startActivity(actividaPrincipal1);
+                return true;
+            default:
+            	//MainActivity.dificultad="facil";
+            	pintarTablero();
+                return true;
+                
+            }
+        } 
+        
+		});
+		
 
 		// EStilo LCD para cronometro
 		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
@@ -153,18 +188,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView4.setTextColor(Color.RED);
 		textView4.setTextSize(18);
 		textView3.setTextColor(Color.WHITE);
-		/*Imagen unaImagen;
-		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();*/
-				
-		/*for(i=1;i<100;i++){
-			marco = (ViewGroup)findViewById(R.id.contenedor);
-            unaImagen = new Imagen(this);
-            unaImagen.setId(1);
-            imagenes.add(unaImagen);
-           
-            marco.addView(unaImagen);
-            unaImagen.setOnTouchListener(new MyTouchListener());
-		}   */
+		
 		tabla = new Tablero(dificultad);
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
@@ -174,7 +198,22 @@ public class MainActivity extends Activity implements OnTouchListener {
 		this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
 		comenzarTiempo(); 
 	
-	}	
+	}
+	
+	
+
+public boolean onKeyUp(int keyCode, KeyEvent event) {
+		Intent actividaPrincipal1 = new Intent("com.example.gridview.pantalla_menu.PRINCIPALUNO");
+ 
+		switch(keyCode){
+			case KeyEvent.KEYCODE_BACK:
+				startActivity(actividaPrincipal1);
+				return true;
+			
+		}
+		
+		return super.onKeyUp(keyCode, event);
+	}
 	
 	 public void comenzarTiempo(){
          if (CONTADOR == 0){

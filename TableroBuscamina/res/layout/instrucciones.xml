@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo_instrucciones" >  "
+    android:background="@drawable/fondojuego" >  
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,6 +20,8 @@
                 android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:text="Instrucciones"
+                android:textStyle="bold"
+                android:textColor="#FFFF33"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="5mm" />
 
@@ -35,6 +36,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:text="REGLAS DEL JUEGO"
+        android:textStyle="bold"
+        android:textColor="#FFFF33"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -43,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
+        android:textStyle="bold"
         android:textColor="#ffffff"
         android:text="1. Si se descubre una mina termina el juego." />
 
@@ -53,6 +57,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:textColor="#ffffff"
+        android:textStyle="bold"
         
         android:text="2. Si se descubre un recuadro vacío, el juego sigue." />
     
@@ -63,6 +68,9 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:textColor="#ffffff"
-        android:text="3. Si se descubre un número, indica el número de minas que hay ocultas en los ocho recuadros de alrededor, una información que le permite deducir los recuadros en los que puede hacer clic con seguridad." />
-
+       
+        android:textStyle="bold"
+        
+        android:text="3.     Si se descubre un número indica el número  de minas que  hay ocultas en los  ocho cuadros de alrededor con esto se permite deducir los recuadros en los que puede hacer clic con seguridad." />
+		
 </LinearLayout>

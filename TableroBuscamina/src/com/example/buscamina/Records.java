@@ -67,7 +67,7 @@ public class Records extends Activity{
 	        }
 	        //Se guarda los jugadores para top Facil
 	        topFacil.setText(totalscoreName);
-	        topFacil.setTextColor(Color.BLACK);
+	        topFacil.setTextColor(Color.WHITE);
 	        topFacil.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
 	        topFacil.setTextSize(15);
 	        topFacil.setKeyListener(null);
@@ -94,7 +94,7 @@ public class Records extends Activity{
 	        }
 	        //Se guarda los jugadores para top Intermedio
 	        topIntermedio.setText(totalscoreName);
-	        topIntermedio.setTextColor(Color.BLACK);
+	        topIntermedio.setTextColor(Color.WHITE);
 	        topIntermedio.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
 	        topIntermedio.setTextSize(15);
 	        topIntermedio.setKeyListener(null);
@@ -121,13 +121,13 @@ public class Records extends Activity{
 	        }
 	        //Se guarda los jugadores para top Dificil
 	        topDificil.setText(totalscoreName);
-	        topDificil.setTextColor(Color.BLACK);
+	        topDificil.setTextColor(Color.WHITE);
 	        topDificil.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
 	        topDificil.setTextSize(15);
 	        topDificil.setKeyListener(null);
 	        
 	        titulo.setText("Tabla de posiciones\n");
-	        titulo.setTextColor(Color.BLUE);
+	        titulo.setTextColor(Color.YELLOW);
 	        titulo.setTypeface(Typeface.SANS_SERIF);
 	        titulo.setTextSize(20);
 	        titulo.setGravity(Gravity.CENTER_HORIZONTAL);

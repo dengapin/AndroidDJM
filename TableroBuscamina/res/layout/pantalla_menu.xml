@@ -51,9 +51,10 @@
 			        android:layout_height="wrap_content"
 			        android:gravity="center"
 			        android:text="@string/DIFICULTAD"
-			        android:textColor="#ffffff"
+			        android:background="#FFFFCC"
+			        android:textColor="#000000"
 			        android:textStyle="bold" 
-			        android:textSize="18dp"/>
+			        android:textSize="19dp"/>
 
 		    </LinearLayout>
 		    
@@ -78,9 +79,10 @@
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#ffffff"
+				  	android:background="#FFFFCC"
+			        android:textColor="#000000"
 				  	android:text="@string/ACERCA_DE"
-				  	android:textSize="18dp"
+				  	android:textSize="19dp"
 			  	/>
 		    </LinearLayout>
 		    
@@ -117,7 +119,8 @@
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#ffffff"
+				  	android:background="#FFFFCC"
+			        android:textColor="#000000"
 				  	android:text="@string/INSTRUCCIONES"
 				  	android:textSize="16dp"
 			  	/>
@@ -143,9 +146,10 @@
 				  	android:layout_height="wrap_content" 
 				  	android:gravity="center"
 				  	android:textStyle="bold"
-				  	android:textColor="#ffffff"
+				  	android:background="#FFFFCC"
+			        android:textColor="#000000"
 				  	android:text="@string/JUGAR"
-				  	android:textSize="18dp"
+				  	android:textSize="19dp"
 			  	/>
 		    </LinearLayout>
 		    
