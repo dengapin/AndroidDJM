@@ -55,7 +55,7 @@ public final class R {
         public static final int minesweeper=0x7f02001f;
         public static final int number=0x7f020020;
         public static final int sad=0x7f020021;
-        public static final int scroll=0x7f020022;
+        public static final int scrolling=0x7f020022;
         public static final int setting=0x7f020023;
         public static final int sorprendido=0x7f020024;
         public static final int triste=0x7f020025;

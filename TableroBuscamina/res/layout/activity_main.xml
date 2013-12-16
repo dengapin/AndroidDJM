@@ -57,9 +57,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
     	<Button
     	    android:id="@+id/scroller"
-    	    android:gravity="center"
-    	    android:layout_width="50dp"
-    	    android:layout_height="50dp"
+    	    android:layout_gravity="center"
+    	    android:layout_width="30dp"
+    	    android:layout_height="30dp"
     	    />
    
     </LinearLayout>

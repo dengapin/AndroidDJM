@@ -32,12 +32,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.graphics.PorterDuff;
 
 public class MainActivity extends Activity implements OnTouchListener {
 	private boolean inicio=true, finxBomba=false, finxGanar=false;
@@ -62,7 +65,12 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private int ScoreSize;
 	private Bitmap casillaimg,bombaimg,blankimg,numberimg,flagimg,bunkerimg;
 	private ScrollView vscroll;
+	private Button botonScroll;
 	private HorizontalScrollView hscroll;
+	private Paint pintar, pintaNums;
+	private boolean scrolleable=false;
+	private String textHour, textMin, textSec;
+	private int remainder, hour, min, sec;
 	public static String dificultad="facil";
 	
 	
@@ -91,6 +99,44 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView2 = (TextView) findViewById(R.id.textView2);
 		textView3 = (TextView) findViewById(R.id.textView3);
 		textView4 = (TextView) findViewById(R.id.textView4);
+		casillaimg = BitmapFactory.decodeResource(getResources(), R.drawable.casilla);
+		bombaimg = BitmapFactory.decodeResource(getResources(), R.drawable.bomb);
+		blankimg = BitmapFactory.decodeResource(getResources(), R.drawable.blank);
+		numberimg = BitmapFactory.decodeResource(getResources(), R.drawable.number);
+		flagimg = BitmapFactory.decodeResource(getResources(), R.drawable.flag);
+		bunkerimg = BitmapFactory.decodeResource(getResources(), R.drawable.bunker);
+		pintar = new Paint();
+		pintaNums = new Paint();
+		botonScroll = (Button) findViewById(R.id.scroller);
+		botonScroll.setBackgroundResource(R.drawable.scrolling);
+        botonScroll.setOnTouchListener(new OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+            	if( finxBomba==false && finxGanar==false){
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        v.getBackground().setColorFilter(Color.BLACK,PorterDuff.Mode.SRC_ATOP);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP: {
+                        v.getBackground().clearColorFilter();
+                        v.invalidate();
+                        if(!inicio){
+                        if(scrolleable){
+                        	scrolleable = false;
+                        	Toast.makeText(MainActivity.this , "Scroll deshabilitado", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                        	scrolleable = true;
+                        	Toast.makeText(MainActivity.this , "Scroll habilitado", Toast.LENGTH_LONG).show();
+                        }
+                        }
+                        break;
+                    }
+                }}
+                return false;
+            }
+        });
 
 		// EStilo LCD para cronometro
 		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
@@ -98,12 +144,14 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView1.setTypeface(lcdFont);
 		textView2.setTypeface(lcdFont);
 		textView2.setTextColor(Color.RED);
+		textView2.setTextSize(15);
 		textView1.setTextColor(Color.WHITE);
 		
 		//Estilo LCD para contador de Banderas
 		textView3.setTypeface(lcdFont);
 		textView4.setTypeface(lcdFont);
 		textView4.setTextColor(Color.RED);
+		textView4.setTextSize(18);
 		textView3.setTextColor(Color.WHITE);
 		/*Imagen unaImagen;
 		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();*/
@@ -144,17 +192,24 @@ public class MainActivity extends Activity implements OnTouchListener {
          public void run(){
                 long MILESIMAS = System.currentTimeMillis();
                  ++CONTADOR;
-                 if (CONTADOR < 10){
-                         textView2.setText("00" + Integer.toString(CONTADOR));
-                 }
-                 
-                 
-                 else if (CONTADOR < 100){
-                         textView2.setText("0" + Integer.toString(CONTADOR));
-                 }
-                 else{
-                         textView2.setText(Integer.toString(CONTADOR));
-                 }
+                hour = CONTADOR / 3600;
+ 	            remainder = (int) CONTADOR - hour * 3600;
+ 	            min = remainder / 60;
+ 	            remainder = remainder - min * 60;
+ 	            sec = remainder;
+ 	            if(sec<10)
+ 	            	textSec="0"+Integer.toString(sec);
+ 	            else
+ 	            	textSec=Integer.toString(sec);
+ 	            if(min<10)
+	            	textMin="0"+Integer.toString(min);
+ 	            else
+ 	            	textMin=Integer.toString(min);
+ 	            if(hour<10)
+	            	textHour="0"+Integer.toString(hour);
+ 	            else
+ 	            	textHour=Integer.toString(hour);
+ 	             textView2.setText(textHour+":"+textMin+":"+textSec);
                  textView4.setText(Integer.toString(FLAGS));
                  TIMER.postAtTime(this, MILESIMAS);
                  TIMER.postDelayed(updateTimeElasped, 1000);
@@ -171,18 +226,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 			Typeface tf = Typeface.create("Helvetica",Typeface.BOLD);
 			int tamCuad = 0;
 			tamCuad = 48;
-			Paint pintar = new Paint();
-			Paint pintaNums = new Paint();
-			Paint pintaBomb = new Paint();
-			casillaimg = BitmapFactory.decodeResource(getResources(), R.drawable.casilla);
-			bombaimg = BitmapFactory.decodeResource(getResources(), R.drawable.bomb);
-			blankimg = BitmapFactory.decodeResource(getResources(), R.drawable.blank);
-			numberimg = BitmapFactory.decodeResource(getResources(), R.drawable.number);
-			flagimg = BitmapFactory.decodeResource(getResources(), R.drawable.flag);
-			bunkerimg = BitmapFactory.decodeResource(getResources(), R.drawable.bunker);
 			pintaNums.setTypeface(tf);
 			pintaNums.setTextSize(25);
-			pintaBomb.setARGB(255, 0, 0, 0);
 			int filaact = 0;
 			for (int j = 0; j < tabla.getTabla().length; j++) {
 				for (int i = 0; i < tabla.getTabla()[0].length; i++) {
@@ -222,10 +267,10 @@ public class MainActivity extends Activity implements OnTouchListener {
 							else if(casilla.getNumvalue()==6)
 								pintaNums.setARGB(255,64,224,208);
 							else if(casilla.getNumvalue()==7)
-								pintaNums.setColor(Color.WHITE);
+								pintaNums.setColor(Color.BLACK);
 							else if(casilla.getNumvalue()==8)
 								pintaNums.setColor(Color.GRAY);
-							canvas.drawText(casilla.getNumvalue()+"",(i * tamCuad + (tamCuad / 2))-tamCuad/8,(filaact + (tamCuad / 2))+tamCuad/8, pintaNums);
+							canvas.drawText(casilla.getNumvalue()+"",(i * tamCuad + (tamCuad / 2))-tamCuad/5,(filaact + (tamCuad / 2))+tamCuad/5, pintaNums);
 							}
 						else if(casilla.getId().equals("bomba")){
 							if(casilla.isFlagged())
@@ -247,7 +292,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
 	@Override
 public boolean onTouch(View v, MotionEvent event) {
 		if(finxBomba==false && finxGanar==false){
@@ -258,6 +303,9 @@ public boolean onTouch(View v, MotionEvent event) {
 				case (MotionEvent.ACTION_DOWN):
 					return true;
 				case(MotionEvent.ACTION_MOVE):
+					if(!scrolleable){
+					vscroll.requestDisallowInterceptTouchEvent(true);
+					hscroll.requestDisallowInterceptTouchEvent(true);
 					for (int i = 0; i < tabla.getTabla().length; i++) {
 						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
 							if(!inicio){
@@ -267,7 +315,7 @@ public boolean onTouch(View v, MotionEvent event) {
 										pintarTablero();
 										FLAGS++;
 									}
-									else{
+									else if(tabla.getTabla()[i][j].isWrapped() && !tabla.getTabla()[i][j].isFlagged()){
 										if(FLAGS!=0){
 										tabla.getTabla()[i][j].setFlagged(true);
 										pintarTablero();
@@ -277,6 +325,10 @@ public boolean onTouch(View v, MotionEvent event) {
 							}
 						}
 						
+					}}
+					else{
+						vscroll.requestDisallowInterceptTouchEvent(false);
+						hscroll.requestDisallowInterceptTouchEvent(false);
 					}
 				return true;
 						
@@ -306,8 +358,6 @@ public boolean onTouch(View v, MotionEvent event) {
 									if(finxGanar){
 										detenerTiempo();
 										configurarCarita();
-										memoria = getSharedPreferences("GameBuscaminas",Context.MODE_PRIVATE);
-										editor = memoria.edit();
 										nombreJugador = new EditText(this);
 										new AlertDialog.Builder(this)
 									    .setTitle("Has Ganado!")
@@ -316,9 +366,24 @@ public boolean onTouch(View v, MotionEvent event) {
 									    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
 									    	public void onClick(DialogInterface dialog, int which) {
 									        	if(!nombreJugador.getText().toString().equals(null)){
-									    		ScoreSize = getScoreNumberMemory(memoria);
-									        	editor.putString("score"+ScoreSize, nombreJugador.getText().toString()+","+CONTADOR);
-									        	editor.commit();
+									        		if(dificultad.equals("facil")){
+									        			memoria = getSharedPreferences("GameBuscaminasFacil",Context.MODE_PRIVATE);
+									        			editor = memoria.edit();
+									        			ScoreSize = getScoreNumberMemory(memoria);
+									        			editor.putString("score"+ScoreSize, nombreJugador.getText().toString()+","+CONTADOR);
+									        			editor.commit();}
+									        		else if(dificultad.equals("intermedio")){
+									        			memoria = getSharedPreferences("GameBuscaminasIntermedio",Context.MODE_PRIVATE);
+									        			editor = memoria.edit();
+									        			ScoreSize = getScoreNumberMemory(memoria);
+									        			editor.putString("score"+ScoreSize, nombreJugador.getText().toString()+","+CONTADOR);
+									        			editor.commit();}
+									        		else if(dificultad.equals("dificil")){
+									        			memoria = getSharedPreferences("GameBuscaminasDificil",Context.MODE_PRIVATE);
+									        			editor = memoria.edit();
+									        			ScoreSize = getScoreNumberMemory(memoria);
+									        			editor.putString("score"+ScoreSize, nombreJugador.getText().toString()+","+CONTADOR);
+									        			editor.commit();}
 									        	
 									        }}
 									     })
