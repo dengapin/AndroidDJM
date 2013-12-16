@@ -20,26 +20,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.graphics.Typeface;
 import android.support.v4.view.MotionEventCompat;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 public class MainActivity extends Activity implements OnTouchListener {
 	private boolean inicio=true, finxBomba=false, finxGanar=false;
@@ -63,8 +61,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Editor editor;
 	private EditText nombreJugador;
 	private int ScoreSize;
-	
-	
+	private Bitmap casillaimg,bombaimg,blankimg,numberimg,flagimg;
+	private ScrollView vscroll;
+	private HorizontalScrollView hscroll;
 	
 	public static String dificultad="facil";
 	
@@ -88,8 +87,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
+		vscroll = (ScrollView) findViewById(R.id.vscroll);
+		hscroll = (HorizontalScrollView) findViewById(R.id.hscroll);
 		textView1 = (TextView) findViewById(R.id.textView1);
 		textView2 = (TextView) findViewById(R.id.textView2);
 		//imageview = (ImageView) findViewById(R.id.imageView1);
@@ -100,16 +99,16 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView1.setTypeface(lcdFont);
 		textView2.setTypeface(lcdFont);
 		textView2.setTextColor(Color.RED);
-		
+		textView1.setTextColor(Color.WHITE);
 		
 		tabla = new Tablero(dificultad);
 		comenzarTiempo(); 
 		
 		
-		Imagen unaImagen;
-		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();
+		/*Imagen unaImagen;
+		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();*/
 				
-		for(i=1;i<100;i++){
+		/*for(i=1;i<100;i++){
 			marco = (ViewGroup)findViewById(R.id.contenedor);
             unaImagen = new Imagen(this);
             unaImagen.setId(1);
@@ -117,7 +116,7 @@ public class MainActivity extends Activity implements OnTouchListener {
            
             marco.addView(unaImagen);
             unaImagen.setOnTouchListener(new MyTouchListener());
-		}   
+		}   */
 		
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
@@ -170,54 +169,47 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 		protected void onDraw(Canvas canvas) {
 			Casilla casilla;
-			Typeface tf = Typeface.create(Typeface.SERIF,Typeface.BOLD);
+			Typeface tf = Typeface.create("Helvetica",Typeface.BOLD);
 			int tamCuad = 0;
-			tamCuad = 37;
+			tamCuad = 48;
 			Paint pintar = new Paint();
 			Paint pintaNums = new Paint();
 			Paint pintaBomb = new Paint();
+			casillaimg = BitmapFactory.decodeResource(getResources(), R.drawable.casilla);
+			bombaimg = BitmapFactory.decodeResource(getResources(), R.drawable.bomb);
+			blankimg = BitmapFactory.decodeResource(getResources(), R.drawable.blank);
+			numberimg = BitmapFactory.decodeResource(getResources(), R.drawable.number);
+			flagimg = BitmapFactory.decodeResource(getResources(), R.drawable.flag);
+			
 			pintaNums.setTypeface(tf);
-			pintaNums.setTextSize(16);
+			pintaNums.setTextSize(25);
 			pintaBomb.setARGB(255, 0, 0, 0);
 			int filaact = 0;
 			for (int j = 0; j < tabla.getTabla().length; j++) {
 				for (int i = 0; i < tabla.getTabla()[0].length; i++) {
 					casilla = tabla.getTabla()[j][i];
 					if(inicio){
-						pintar.setStyle(Paint.Style.FILL);
 						if (casilla.isWrapped()){
-							if(casilla.isFlagged()==true){
-								pintar.setARGB(100, 255, 0, 0);
-								canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
-							}
-							else{
-								pintar.setARGB(153, 204, 204, 204);
-								canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
-							}
+							canvas.drawBitmap(casillaimg, i * tamCuad, filaact, pintar);
 							}
 						casilla.fijarxy(i * tamCuad, filaact, tamCuad);
 					}
 					else{
-					pintar.setStyle(Paint.Style.FILL);
 					casilla.fijarxy(i * tamCuad, filaact, tamCuad);
 					if (casilla.isWrapped()){
-						if(casilla.isFlagged()==true){
-							pintar.setARGB(100, 255, 0, 0);
-							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+						if(casilla.isFlagged()){
+							canvas.drawBitmap(flagimg, i * tamCuad, filaact, pintar);
 						}
 						else{
-							pintar.setARGB(153, 204, 204, 204);
-							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+							canvas.drawBitmap(casillaimg, i * tamCuad, filaact, pintar);
 						}
 						}
 					else{
 						if(casilla.getId().equals("vacio")){
-							pintar.setARGB(0, 0, 0, 0);
-							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);}
+							canvas.drawBitmap(blankimg, i * tamCuad, filaact, pintar);
+							}
 						else if(casilla.getId().equals("numero")){
-							pintar.setStyle(Style.STROKE);
-							pintar.setARGB(200, 204, 204, 204);
-							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
+							canvas.drawBitmap(numberimg, i * tamCuad, filaact, pintar);
 							if(casilla.getNumvalue()==1)
 								pintaNums.setColor(Color.BLUE);
 							else if(casilla.getNumvalue()==2)
@@ -231,15 +223,13 @@ public class MainActivity extends Activity implements OnTouchListener {
 							else if(casilla.getNumvalue()==6)
 								pintaNums.setARGB(255,64,224,208);
 							else if(casilla.getNumvalue()==7)
-								pintaNums.setColor(Color.BLACK);
+								pintaNums.setColor(Color.WHITE);
 							else if(casilla.getNumvalue()==8)
 								pintaNums.setColor(Color.GRAY);
 							canvas.drawText(casilla.getNumvalue()+"",(i * tamCuad + (tamCuad / 2))-tamCuad/8,(filaact + (tamCuad / 2))+tamCuad/8, pintaNums);
 							}
 						else if(casilla.getId().equals("bomba")){
-							pintar.setARGB(255, 153, 153, 153);
-							canvas.drawRect(i * tamCuad, filaact, i * tamCuad + tamCuad - 2, filaact + tamCuad - 2, pintar);
-							canvas.drawCircle(i * tamCuad + (tamCuad / 2), filaact + (tamCuad / 2), 8, pintaBomb);
+							canvas.drawBitmap(bombaimg, i * tamCuad, filaact, pintar);
 							}
 					}
 				}
@@ -265,6 +255,26 @@ public boolean onTouch(View v, MotionEvent event) {
 			switch(action){
 				case (MotionEvent.ACTION_DOWN):
 					return true;
+				case(MotionEvent.ACTION_MOVE):
+					for (int i = 0; i < tabla.getTabla().length; i++) {
+						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
+							if(!inicio){
+								if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())){
+									if(tabla.getTabla()[i][j].isFlagged()){
+										tabla.getTabla()[i][j].setFlagged(false);
+										pintarTablero();
+									}
+									else{
+											tabla.getTabla()[i][j].setFlagged(true);
+											pintarTablero();
+									}
+								}
+							}
+						}
+						
+					}
+				return true;
+						
 		
 				case (MotionEvent.ACTION_UP):
 					for (int i = 0; i < tabla.getTabla().length; i++) {
@@ -284,12 +294,12 @@ public boolean onTouch(View v, MotionEvent event) {
 									finxGanar = accion.getFinxGanar();
 									if (finxBomba){
 										detenerTiempo();
-										//img.setImageResource(R.drawable.triste);
 										configurarCarita();
 									}
 									
 									if(finxGanar){
 										detenerTiempo();
+										configurarCarita();
 										memoria = getSharedPreferences("GameBuscaminas",Context.MODE_PRIVATE);
 										editor = memoria.edit();
 										nombreJugador = new EditText(this);
@@ -334,8 +344,11 @@ public boolean onTouch(View v, MotionEvent event) {
    public void configurarCarita(){
 	   imagenCarita= (ImageView) findViewById(R.id.imageView1);
 	   if(this.finxBomba){
-		   imagenCarita.setImageResource(R.drawable.triste);
+		   imagenCarita.setImageResource(R.drawable.sad);
 		   
+	   }
+	   else if(this.finxGanar){
+		   imagenCarita.setImageResource(R.drawable.cool);
 	   }
 	   
    }
@@ -351,10 +364,10 @@ public boolean onTouch(View v, MotionEvent event) {
     	
 	}
 	public int getTableroHeight(int casillasH){
-		return 37*casillasH;
+		return 48*casillasH;
 	}
 	public int getTableroWidth(int casillasW){
-		return 37*casillasW;
+		return 48*casillasW;
 	}
 	
 	public int getScoreNumberMemory(SharedPreferences memory){
@@ -362,7 +375,7 @@ public boolean onTouch(View v, MotionEvent event) {
 	   } 
 	
 	
-
+/*
 	final class MyTouchListener implements View.OnTouchListener {
 		
 		public boolean onTouch(View objeto, MotionEvent event) {
@@ -412,7 +425,7 @@ public boolean onTouch(View v, MotionEvent event) {
 		          
 				 for (int i = 0; i < tabla.getTabla().length; i++) {
 						for (int j = 0; j < tabla.getTabla()[0].length; j++) {
-							if (tabla.getTabla()[i][j].dentro(X-xDelta-39,Y-yDelta )) {
+							if (tabla.getTabla()[i][j].dentro(X-xDelta-55,Y-yDelta )) {
 								if(tabla.getTabla()[i][j].isFlagged())
 								tabla.getTabla()[i][j].setFlagged(false);
 								else
@@ -432,4 +445,4 @@ public boolean onTouch(View v, MotionEvent event) {
 		}
 			return true;
 		}
-}}
+}*/}

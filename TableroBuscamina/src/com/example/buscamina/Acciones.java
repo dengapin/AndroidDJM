@@ -38,20 +38,20 @@ public Acciones(Casilla[][] tablero, ArrayList<Casilla> bombas){
 public void ActionUnwrap(Casilla casilla){
 	switch(casilla.getNumvalue()){
 		case 9:
-				if(!casilla.isFlagged() && casilla.isWrapped())
+				if(!casilla.isFlagged() && casilla.isWrapped()){
 					for(Casilla temp: bombas)
 						temp.setWrapped(false);
-				this.finxBomba = true;
+				this.finxBomba = true;}
 			break;
 		case 0:
-				if(!casilla.isFlagged() && casilla.isWrapped())
+				if(!casilla.isFlagged() && casilla.isWrapped()){
 					casilla.setWrapped(false);
-					ActionUnwrapVacios(casilla);
+					ActionUnwrapVacios(casilla);}
 			break;
 		default:
-			if(!casilla.isFlagged() && casilla.isWrapped())
+			if(!casilla.isFlagged() && casilla.isWrapped()){
 				casilla.setWrapped(false);
-			this.finxGanar = testFinxGanar();
+			this.finxGanar = testFinxGanar();}
 		break;
 	}
 }
