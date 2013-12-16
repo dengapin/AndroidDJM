@@ -45,10 +45,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Tablero tabla;
 	private Acciones accion;
 	private LinearLayout layout;
-	private TextView textView1;
-	private TextView textView2;
+	private TextView textView1, textView2, textView3, textView4;
 	private Handler TIMER = new Handler();
-    private int CONTADOR = 0;
+    private int CONTADOR = 0, FLAGS=0;
 	private ViewGroup marco;	
 	private ImageView imageview;
 	private int xDelta;
@@ -61,10 +60,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 	private Editor editor;
 	private EditText nombreJugador;
 	private int ScoreSize;
-	private Bitmap casillaimg,bombaimg,blankimg,numberimg,flagimg;
+	private Bitmap casillaimg,bombaimg,blankimg,numberimg,flagimg,bunkerimg;
 	private ScrollView vscroll;
 	private HorizontalScrollView hscroll;
-	
 	public static String dificultad="facil";
 	
 	
@@ -91,7 +89,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 		hscroll = (HorizontalScrollView) findViewById(R.id.hscroll);
 		textView1 = (TextView) findViewById(R.id.textView1);
 		textView2 = (TextView) findViewById(R.id.textView2);
-		//imageview = (ImageView) findViewById(R.id.imageView1);
+		textView3 = (TextView) findViewById(R.id.textView3);
+		textView4 = (TextView) findViewById(R.id.textView4);
 
 		// EStilo LCD para cronometro
 		Typeface lcdFont = Typeface.createFromAsset(getAssets(),
@@ -101,10 +100,11 @@ public class MainActivity extends Activity implements OnTouchListener {
 		textView2.setTextColor(Color.RED);
 		textView1.setTextColor(Color.WHITE);
 		
-		tabla = new Tablero(dificultad);
-		comenzarTiempo(); 
-		
-		
+		//Estilo LCD para contador de Banderas
+		textView3.setTypeface(lcdFont);
+		textView4.setTypeface(lcdFont);
+		textView4.setTextColor(Color.RED);
+		textView3.setTextColor(Color.WHITE);
 		/*Imagen unaImagen;
 		ArrayList<Imagen>imagenes= new ArrayList<Imagen>();*/
 				
@@ -117,15 +117,14 @@ public class MainActivity extends Activity implements OnTouchListener {
             marco.addView(unaImagen);
             unaImagen.setOnTouchListener(new MyTouchListener());
 		}   */
-		
+		tabla = new Tablero(dificultad);
 		accion = new Acciones(tabla.getTabla(),tabla.getBombas());
 		layout = (LinearLayout) findViewById(R.id.layout2);
-		
 		board = new DibujarBoard (this);
 		board.setId(2);
 		board.setOnTouchListener(this);
 		this.layout.addView(this.board,getTableroWidth(this.tabla.getTabla()[0].length),getTableroHeight(this.tabla.getTabla().length));
-		
+		comenzarTiempo(); 
 	
 	}	
 	
@@ -145,7 +144,6 @@ public class MainActivity extends Activity implements OnTouchListener {
          public void run(){
                 long MILESIMAS = System.currentTimeMillis();
                  ++CONTADOR;
-
                  if (CONTADOR < 10){
                          textView2.setText("00" + Integer.toString(CONTADOR));
                  }
@@ -157,6 +155,7 @@ public class MainActivity extends Activity implements OnTouchListener {
                  else{
                          textView2.setText(Integer.toString(CONTADOR));
                  }
+                 textView4.setText(Integer.toString(FLAGS));
                  TIMER.postAtTime(this, MILESIMAS);
                  TIMER.postDelayed(updateTimeElasped, 1000);
          }
@@ -180,7 +179,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 			blankimg = BitmapFactory.decodeResource(getResources(), R.drawable.blank);
 			numberimg = BitmapFactory.decodeResource(getResources(), R.drawable.number);
 			flagimg = BitmapFactory.decodeResource(getResources(), R.drawable.flag);
-			
+			bunkerimg = BitmapFactory.decodeResource(getResources(), R.drawable.bunker);
 			pintaNums.setTypeface(tf);
 			pintaNums.setTextSize(25);
 			pintaBomb.setARGB(255, 0, 0, 0);
@@ -229,7 +228,10 @@ public class MainActivity extends Activity implements OnTouchListener {
 							canvas.drawText(casilla.getNumvalue()+"",(i * tamCuad + (tamCuad / 2))-tamCuad/8,(filaact + (tamCuad / 2))+tamCuad/8, pintaNums);
 							}
 						else if(casilla.getId().equals("bomba")){
-							canvas.drawBitmap(bombaimg, i * tamCuad, filaact, pintar);
+							if(casilla.isFlagged())
+								canvas.drawBitmap(bunkerimg, i * tamCuad, filaact, pintar);
+							else
+								canvas.drawBitmap(bombaimg, i * tamCuad, filaact, pintar);
 							}
 					}
 				}
@@ -263,10 +265,13 @@ public boolean onTouch(View v, MotionEvent event) {
 									if(tabla.getTabla()[i][j].isFlagged()){
 										tabla.getTabla()[i][j].setFlagged(false);
 										pintarTablero();
+										FLAGS++;
 									}
 									else{
-											tabla.getTabla()[i][j].setFlagged(true);
-											pintarTablero();
+										if(FLAGS!=0){
+										tabla.getTabla()[i][j].setFlagged(true);
+										pintarTablero();
+										FLAGS--;}
 									}
 								}
 							}
@@ -282,6 +287,7 @@ public boolean onTouch(View v, MotionEvent event) {
 							if (tabla.getTabla()[i][j].dentro((int) event.getX(),(int) event.getY())) {
 								if(inicio){
 									tabla.llenartablerobombas(i,j);
+									FLAGS = tabla.getBombas().size();
 									inicio=false;
 									accion.ActionUnwrap(tabla.getTabla()[i][j]);
 									pintarTablero();

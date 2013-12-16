@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/scrollView1"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -46,8 +46,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:text="@string/time"
+        android:text="@string/bombcount"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     	<TextView
@@ -55,19 +54,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:text="@string/_00"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     	<Button
     	    android:id="@+id/scroller"
-    	    android:layout_width="30px"
-    	    android:layout_height="30px"
+    	    android:gravity="center"
+    	    android:layout_width="50dp"
+    	    android:layout_height="50dp"
     	    />
    
     </LinearLayout>
  <ScrollView
         android:id="@+id/vscroll"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
