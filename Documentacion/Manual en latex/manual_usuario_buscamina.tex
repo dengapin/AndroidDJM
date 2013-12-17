@@ -41,14 +41,30 @@
 \section{Introducción}
 El juego a implementar es el buscamina, con tres niveles de juego facil, intermedio y difícil. El lenguaje en el que se debe programar  es Android y nosotros hemos utilizado eclipse como IDE de desarrollo. La implementación del juego se ha basado en una serie de layout tomando diferentes tipos para cada pantalla que creemos. El programar en Android representa un reto se ha buscado destacar la cualidad más grande del lenguaje que es sus graficos. Las aplicaciones dirigidas a dispositivos móviles o tablets son muy llamativo. Así pues nosotros hemos prestado mucha atención en los graficos e imagenes que utilizaremos ya que este tipo de aplicaciones son muy visuales. Este programa aparte de las dificultades tiene una opción de Records donde se guardará una lista de las personas que han terminado el juego y en que tiempo lo han hecho, también tendrá dos secciones una de informacion acerca del juego y otra donde se hable acerca de los desarrolladores. Estas son las especificaciones del juego que esperamos  cumplir.
 
+
+
+\section{Alcance}
+
+El proyecto permite todas las opciones del buscaminas que ya conocemos. Al iniciar el juego podemos escoger los niveles de dificultad que están agrupados en tres categorías\textbf{ fácil, difícil e intermedio} luego de esto observaremos el tablero de acuerdo a la dificultad escogida donde tendremos dos secciones(layouts) donde tendremos de la izquierdo nuestro cronometro, nuestro emoticón o carita y nuestras banderas. Podemos dar click a la carita si deseamos resetear nuestro juego y solo se nos pedirá el nombre en caso de haber ganado. Al regresar al menú principal tenemos cuatro opciones ya sea la de iniciar un juego que es la mencionada anteriormente, la de records que nos da una lista de los jugadores con sus tiempos, una descripción de los desarrolladores y un poco de información  de como jugar el buscaminas.
+Como limitaciones del juego tenemos el zoom algo que no se pudo implementar por falta de tiempo, el juego esta diseñado para tablets solamente y no puede es sensible a rotación del dispositivo automáticamente se coloca en landscape. 
+
+\newpage
+
+
 \section{Descripción del Juego Buscamina}
-Para implementar el juego utilizamos layouts como tablerow, linearlayout y relativelayout. Se ha implementado para la primera pantalla un hilo que dura 4 segundos en los cuales se reproduce una música de fondo, luego de eso tenemos la pantalla menú que nos muestra varias opciones como dificultades del juego , records, desarrolladores y acerca del juego.Cuando tome la opción de desarrolladores se muestra información acerca de los que implementaron el juego, en acerca de se muestra instrucciones del juego y en records una lista que esta guardada mediante una base de datos que nos permite tener una lista de los jugadores que han ganado y en cuanto tiempo lo han hecho. Mas adelante se detallan caracteristicas del juego que fueron importantes para poder cumplir con lo propuesto.
+Para implementar el juego utilizamos layouts como tablerow, linearlayout y relativelayout. Se ha implementado para la primera pantalla un hilo que dura 4 segundos en los cuales se reproduce una música de fondo, luego de eso tenemos la pantalla menú que nos muestra varias opciones como dificultades del juego , records, desarrolladores y acerca del juego.Cuando tome la opción de desarrolladores se muestra información acerca de los que implementaron el juego, en acerca de se muestra instrucciones del juego y en records una lista que esta guardada mediante una base de datos que nos permite tener una lista de los jugadores que han ganado y en cuanto tiempo lo han hecho. Mas adelante se detallan caracteristicas del juego que fueron importantes para poder cumplir con lo propuesto
+
+
+
+
+
+
 
 \begin{center}
 
 \includegraphics{image_buscamina/pantallaInicial}
-
 \includegraphics{image_buscamina/pantallaMenu}
+
 
 
 \end{center}
