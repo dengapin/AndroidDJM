@@ -23,10 +23,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class Records extends Activity{
 	private SharedPreferences memoria;
-	private EditText topFacil,topIntermedio,topDificil, titulo;
+	private EditText topFacil,topIntermedio,topDificil;
+	private TextView titulo, tituloFacil,tituloIntermedio,tituloDificil;
 	private LinearLayout layout1;
 	private String[] scorelist,splitter;
 	private String totalscoreName = "";
@@ -44,10 +46,14 @@ public class Records extends Activity{
 	        scorelist = new String[memoria.getAll().size()];
 	        splitter = new String[2];
 	        layout1 = (LinearLayout) findViewById(R.id.layout1);
+	        titulo = new TextView(this);
+	        tituloFacil = new TextView(this);
+	        tituloIntermedio = new TextView(this);
+	        tituloDificil = new TextView(this);
 	        topFacil = new EditText(this);
 	        topIntermedio = new EditText(this);
 	        topDificil = new EditText(this);
-	        titulo = new EditText(this);
+	        titulo = new TextView(this);
             //Se analiza en memoria top Facil
 	        for(int i=0;i<memoria.getAll().size();i++){
 	        	scorelist[i] = memoria.getString("score"+i, "");
@@ -82,7 +88,7 @@ public class Records extends Activity{
 	        	jugadoresIntermedio.add(new Jugador(splitter[0],Integer.parseInt(splitter[1])));
 	        }
 	        Collections.sort(jugadoresIntermedio);
-	        
+	        totalscoreName="";
 	        for(Jugador temp : jugadoresIntermedio){
 	        	hour = temp.getTiempo() / 3600;
 	            remainder = (int) temp.getTiempo() - hour * 3600;
@@ -109,7 +115,7 @@ public class Records extends Activity{
 	        	jugadoresDificil.add(new Jugador(splitter[0],Integer.parseInt(splitter[1])));
 	        }
 	        Collections.sort(jugadoresDificil);
-	        
+	        totalscoreName = "";
 	        for(Jugador temp : jugadoresDificil){
 	        	hour = temp.getTiempo() / 3600;
 	            remainder = (int) temp.getTiempo() - hour * 3600;
@@ -127,14 +133,31 @@ public class Records extends Activity{
 	        topDificil.setKeyListener(null);
 	        
 	        titulo.setText("Tabla de posiciones\n");
-	        titulo.setTextColor(Color.YELLOW);
-	        titulo.setTypeface(Typeface.SANS_SERIF);
-	        titulo.setTextSize(20);
+	        titulo.setTextColor(Color.MAGENTA);
+	        titulo.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+	        titulo.setTextSize(25);
 	        titulo.setGravity(Gravity.CENTER_HORIZONTAL);
-	        titulo.setKeyListener(null);
+	        tituloFacil.setText("Facil\n");
+	        tituloFacil.setTextColor(Color.YELLOW);
+	        tituloFacil.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+	        tituloFacil.setTextSize(20);
+	        tituloFacil.setGravity(Gravity.CENTER_HORIZONTAL);
+	        tituloIntermedio.setText("Intermedio\n");
+	        tituloIntermedio.setTextColor(Color.YELLOW);
+	        tituloIntermedio.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+	        tituloIntermedio.setTextSize(20);
+	        tituloIntermedio.setGravity(Gravity.CENTER_HORIZONTAL);
+	        tituloDificil.setText("Dificil\n");
+	        tituloDificil.setTextColor(Color.YELLOW);
+	        tituloDificil.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+	        tituloDificil.setTextSize(20);
+	        tituloDificil.setGravity(Gravity.CENTER_HORIZONTAL);
 	        layout1.addView(titulo);
+	        layout1.addView(tituloFacil);
 	        layout1.addView(topFacil);
+	        layout1.addView(tituloIntermedio);
 	        layout1.addView(topIntermedio);
+	        layout1.addView(tituloDificil);
 	        layout1.addView(topDificil);
 	        
 	    }
